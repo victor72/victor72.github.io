@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>使用 org-page 搭建个人博客 - 日知录</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="Victor72" />
+  <meta name="description" content="使用 org-page 搭建个人博客" />
+  <meta name="keywords" content="emacs, org-mode, blog" />
+  <style>
+   #ds-thread #ds-reset .ds-comment-body p {color: #ffffff;}
+   #disqus_thread a {color: #00ffff;}
+  </style>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/kdComment.css" type="text/css">
+  <script type="text/javascript"
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+
+  <body class="container">
+<div>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">日知录</a></h1>
+    <p>学而不思则殆</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/victor72/victor72.github.io">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="http://www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="victor72.github.io">
+    </form>
+  </header>
+</div>
+
+<div>
+<div class="post">
+<h1 class="title">使用 org-page 搭建个人博客</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">利用 Org-Page 跑通本地 Blog</a>
+<ul>
+<li><a href="#sec-1-1">Org-page 安装</a></li>
+<li><a href="#sec-1-2">Org-page Blog 项目配置</a></li>
+<li><a href="#sec-1-3">本地源 org 库初始化</a></li>
+<li><a href="#sec-1-4">本地 blog 输出</a></li>
+<li><a href="#sec-1-5">待办事项</a>
+<ul>
+<li><a href="#sec-1-5-1"><span class="done DONE">DONE</span> 页面风格主题定制</a></li>
+<li><a href="#sec-1-5-2"><span class="done DONE">DONE</span> 本地浏览</a></li>
+<li><a href="#sec-1-5-3"><span class="done DONE">DONE</span> 页面目录定制</a></li>
+<li><a href="#sec-1-5-4"><span class="done DONE">DONE</span> 评论插件</a></li>
+<li><a href="#sec-1-5-5"><span class="todo TODO">TODO</span> 顶部导航尾与部信息的个性化</a></li>
+<li><a href="#sec-1-5-6"><span class="done DONE">DONE</span> 文档必须转换为 unix utf-8 编码。</a></li>
+<li><a href="#sec-1-5-7"><span class="done DONE">DONE</span> 关于站内 google 搜索问题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+故事要从多年前接触到的 <code>Emacs - Muse</code> 说起。算起来那是八、九年前了， <del>组织上</del> 鬼使神差，不知怎么地就叫俺去做软件开发，而且一上来就是高难度的——所谓“高性能并行计算”。那时候国内一窝蜂的上 <code>HPC</code> 项目，都是做“烧钱”堆机器的事情，可以在“高、大、上”机器上跑起来真正有实际工程意义的作业基本上没有。原因很简单，缺乏大型的工程并行计算应用软件，国外有，但人家政府不让卖，因为这玩意首选的应用领域，在国防、军事上。那时候，国内也就中科院有几个学者在这上面做过一些算得上真正意义上的 <code>HPC应用软件</code> 科研工作。而我不过是个画图的，充其量也就是使用商业计算软件完成计算作业的一个 <code>软件用户</code> 而已。开发软件？完全找不到北！！！
+</p>
+
+<p>
+一切从“偷”开源代码开始，光是“读程序”就叫人心浮气躁。记笔记是少不了的，还要说人家老一代的科技工作者素养好，记得当时返聘了一位已经退休的老研究员。每天跟我们几个年轻小伙子一起读 <code>Adina</code> 软件的代码，写的笔记工工整整，比我们现在电脑排版打印的看起来还整齐美观。而我就"臭"了，不光不讲逻辑，而且记的凌乱。小本本用了不知多少，信手拈来的薄记纸片也塞满了抽屉。总之，只在当时起到一点强化记忆的作用，事后完全不可追查，都成了废纸。
+</p>
+
+<p>
+大概到第三年头上，无意中发现了 <code>Emacs - Muse</code> ，妙在简便易用，而且可以输出为 <code>Tex</code> 和 <code>Html</code> ，打印与浏览同时具备了。此后，我就用它完成笔记和交流。可惜，很快我就不做那个工作，新的工作不大需要做笔记，这个东东也就丢下了。
+</p>
+
+<p>
+最近，迷上了读书，突然发现除了工作之外，还有那么多好玩而又深沉的事情。阅读、思考之余也用 <code>LaTeX</code> 摘要、薄记一些心得体会。可这个东东主要用来展示的，书写的时候为了信息和逻辑上略微完整些，常常“节外生枝”，不仅很是消耗时间，稍不小心就打断了之前的阅读和思想。这两天，突然发现 <code>Emacs Org-mode</code> 的“大纲、标签和计划”功能“酷不堪言”，兴趣一下子从“求知”转向“器用”上来了。
+</p>
+
+<p>
+吸取之前的教训，笔记不能总是藏在抽屉里，不时的晒出来温习一下才能唤回“美好的回忆”所以这次先从 <code>Blog</code> 搞起。
+</p>
+
+<p>
+讲废话已经花了不少时间，该干正事了。话说弄这个 <code>Org Page</code> 还是花了点功夫才把它搞通的，今天就先把这个过程记录下来。
+</p>
+
+<p>
+必须事先申明：
+</p>
+<ol class="org-ol">
+<li>Org Page 插件作者为 <a href="https://github.com/kelvinh/org-page">Kelvin Hu</a> <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>；
+</li>
+<li>初次尝试，下载了 Kelvin Hu 的<a href="https://github.com/kelvinh/org-page.git">博客源代码</a>。
+</li>
+</ol>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">利用 Org-Page 跑通本地 Blog</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Org-page 安装</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+由于依赖很多其他的插件，利用 melpa 安装是个比较好的选择。Emacs 24 已经自带 melpa 但缺省提取的只是“稳定”插件列表， <code>org-page</code> 不在其中，因此需要在 <code>.emacs</code> 文件中作如下配置：
+</p>
+
+<pre class="example">
+;; melpa 包管理的配置
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(when (&lt; emacs-major-version 24) ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
+</pre>
+
+<p>
+使用命令 <code>M-x package-list-packages</code> 找到 <code>org-page</code> 安装即可。注意还有四五个依赖包， <code>org-page</code> 包安装页面会给出提示，包列表也都能找到，一起安装之。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Org-page Blog 项目配置</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+配置 Blog 项目的 org 源文件目录：
+</p>
+
+<pre class="example">
+;; org-page 生成页面的配置
+;; (add-to-list 'load-path "path/to/org-page")                  ;; only needed if you install org-page manually
+(require 'org-page)
+(setq op/repository-directory "D:/emacs/MyOrg/org-page/")       ;; the repository location
+(setq op/site-domain "https://victor72.github.io/")             ;; your domain
+;;; the configuration below you should choose one, not both
+(setq op/personal-disqus-shortname "victor72githubio")          ;; your disqus commenting system
+;;; (setq op/personal-duoshuo-shortname "your_duoshuo_shortname")  ;; your duoshuo commenting system
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">本地源 org 库初始化</h3>
+<div class="outline-text-3" id="text-1-3">
+<ol class="org-ol">
+<li>首先，在想写 blog 的文件夹(D:/emacs/MyOrg/org-page)下用 <code>git init</code> (git的安装使用这里就不罗嗦了)建立一个 git repository ，这时得到一个空的库及其 <code>.git</code> 记录；
+</li>
+<li>创建并进入 source 分支: <code>git checkout -b source</code> ;
+</li>
+<li>新建三个基本文件：
+<ul class="org-ul">
+<li>blog 文件夹: 主要的 blog 文件放里面。
+</li>
+<li>about.org 文件：在这里介绍自己。
+</li>
+<li>index.org 文件：在这里写自己博客的首页。
+</li>
+</ul>
+</li>
+<li>git add . ;  git commit。
+</li>
+</ol>
+
+<p>
+我偷懒，暂时直接下载使用了 Kelvin Hu 的<a href="https://github.com/kelvinh/org-page.git">博客源代码</a>。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">本地 blog 输出</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+进入 <code>emacs</code> 执行 <code>M-x op/do-publication</code> 命令。交互过程中大概是先输入两个 “y”，然后输入生成的静态网页文件存放的位置，我是放在： <code>D:/emacs/MyOrg/org-page2html/</code> 。
+</p>
+
+<p>
+至此告一段落，可以看到网页文件了。由于页面上的各种交叉链接地址，是按照将来发布的根目录为基准书写的。因此如果没有开通本地网页服务，暂时只能一个一个打开浏览。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5">待办事项</h3>
+<div class="outline-text-3" id="text-1-5">
+</div><div id="outline-container-sec-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="done DONE">DONE</span> 页面风格主题定制</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<ul class="org-ul">
+<li>正常定制法
+</li>
+</ul>
+
+<p>
+使用命令 <code>M-x customize-group</code> 再输入 <code>org-page</code> 即可。（这种定制法定制能力有限）
+</p>
+
+<ul class="org-ul">
+<li>hack定制法
+</li>
+</ul>
+
+<p>
+参看 themes 文件夹，里面的 template 文件夹使用了 mustache 模板 。而另外一个 source 文件夹有 css、js 等文件，这些东西能让你制作一个漂亮的界面了，毕竟标签不多。（但还需要学习！汗！）
+</p>
+
+<p>
+关于 org-page 的正常定制法以及 custom 页面里各个选项的含义，还需进一步研究……
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="done DONE">DONE</span> 本地浏览</h4>
+<div class="outline-text-4" id="text-1-5-2">
+<p>
+基于 emacs 的 simple-httpd 来进行站点本地测试。
+</p>
+
+<pre class="example">
+(require 'simple-httpd)
+(defun kd/test-org-page (&amp;optional site)
+  "test the org-page's main repository"
+  (interactive (let ((sitet (read-string "测试静态站点名：")))
+                 (list sitet)))
+  (cond ((equal site "victor72")
+         (op/do-publication t nil "~/MyOrg/victor72.github.io")
+         (httpd-serve-directory "~/MyOrg/victor72.github.io")
+         )
+
+        ;;emacs-china
+        ((equal site "emacs-china")
+         (op/do-publication t nil "~/MyOrg/emacs-china.github.io")
+         (httpd-serve-directory "~/MyOrg/emacs-china.github.io")
+         )
+        (t (message "error! no repository"))))
+</pre>
+
+<p>
+生成网页结束后，在 emacs 里头分别执行 M_x httpd-serve-directory ; M_x httpd-start 设置本地网页服务器根目录地址和启动服务。然后就可以在浏览器通过 <a href="http://127.0.0.1:8080">http://127.0.0.1:8080</a> 访问网站了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="done DONE">DONE</span> 页面目录定制</h4>
+<div class="outline-text-4" id="text-1-5-3">
+<p>
+可以在 <code>.emacs</code> 文件中开 (setq org-export-with-toc t) 全局配置，也可以在单个文件中 #+OPTIONS:  toc:t 打开，或 toc:nil 关闭。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4"><span class="done DONE">DONE</span> 评论插件</h4>
+<div class="outline-text-4" id="text-1-5-4">
+<p>
+经验证，前述配置已经生效。
+</p>
+</div>
+</div>
+<div id="outline-container-sec-1-5-5" class="outline-4">
+<h4 id="sec-1-5-5"><span class="todo TODO">TODO</span> 顶部导航尾与部信息的个性化</h4>
+</div>
+
+<div id="outline-container-sec-1-5-6" class="outline-4">
+<h4 id="sec-1-5-6"><span class="done DONE">DONE</span> 文档必须转换为 unix utf-8 编码。</h4>
+<div class="outline-text-4" id="text-1-5-6">
+<p>
+在 windows 环境下，关于 gbk 与 utf-8 编码的冲突，暂时只出现于 emacs_love 主题文件夹中的 footer.mustache 文件。在关于添加评论插件代码处，用到了中文，gbk 编码下是乱码，改变之即解决问题。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5-7" class="outline-4">
+<h4 id="sec-1-5-7"><span class="done DONE">DONE</span> 关于站内 google 搜索问题</h4>
+<div class="outline-text-4" id="text-1-5-7">
+<p>
+同样是 emacs_love 主题文件夹中 nav.mustache 文件，关于谷歌搜索插件代码处，谷歌检索地址过时，改为 <a href="https://www.google.com">https://www.google.com</a> 即可。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+本来想用 Kelvin Hu(改名 kuangdash 了?) 较新的 <a href="https://github.com/kuangdash/EGO">NGO</a> ,可是有个主题文件 ego-map.el 尚未实现，就退而求其次，没再折腾了。呵呵！！！
+</p></div>
+
+
+</div>
+</div>
+</div>
+</div>
+<div>
+  <div class="post-meta">
+    <span title="post date" class="post-info">2016-06-16</span>
+    <span title="last modification date" class="post-info">2016-06-17</span>
+    <span title="tags" class="post-info"><a href="/tags/emacs/">Emacs</a>, <a href="/tags/org-mode/">Org-mode</a>, <a href="/tags/blog/">Blog</a></span>
+    <span title="author" class="post-info">Victor72</span>
+  </div>
+  <script src="/media/js/jquery-2.1.3.min.js"></script>
+  <section>
+    <h1>Comments</h1>
+    <div id="comment-wrap">
+      <a class="disqus_label">使用Disqus评论</a>
+      <a class="ds-label">使用多说评论</a>
+    </ul>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+     //var disqus_developer = 1;
+     var preempt_signal=false;
+     var disqus_identifier = "/blog/2016/06/16/with-org-page-setup-up-personal-blog/";
+     var disqus_url = "https://victor72.github.io/blog/2016/06/16/with-org-page-setup-up-personal-blog/";
+     var disqus_shortname = 'victor72githubio';
+     /* * * DON'T EDIT BELOW THIS LINE * * */
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       $('#disqus_thread').css('display','none');
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </section>
+  <script src="/media/js/kdComment.js"></script>
+  <div class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+    <p>
+      Copyright &copy; 2014 - <span id="footerYear"></span> <a href="mailto:victoryman &lt;at&gt; 126 &lt;dot&gt; com">Victor72</a>
+      &nbsp;&nbsp;-&nbsp;&nbsp;
+      Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a><br/>
+      Themed with <a href="https://github.com/kuangdash/emacs_love" target="_blank">emacs_love</a>
+      <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+  </div>
+    </div>
+
+  </body>
+</html>

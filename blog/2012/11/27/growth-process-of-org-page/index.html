@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>org-page的成长史 - 日知录</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="Kelvin Hu" />
+  <meta name="description" content="my diary about org-page, written in Chinese" />
+  <meta name="keywords" content="org-page" />
+  <style>
+   #ds-thread #ds-reset .ds-comment-body p {color: #ffffff;}
+   #disqus_thread a {color: #00ffff;}
+  </style>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/kdComment.css" type="text/css">
+  <script type="text/javascript"
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+
+  <body class="container">
+<div>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">日知录</a></h1>
+    <p>学而不思则殆</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/victor72/victor72.github.io">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="http://www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="victor72.github.io">
+    </form>
+  </header>
+</div>
+
+<div>
+<div class="post">
+<h1 class="title">org-page的成长史</h1>
+<p>
+org-page的诞生，还是要感谢自己当时的头脑一热。当时自己刚从vim转投到emacs的阵营，而且刚刚对org mode有所了解。而那时候，我正在折腾github的pages（不明真相的童鞋请到<a href="http://pages.github.com">这里</a>围观），而且<a href="http://octopress.org">octopress</a>这个静态站点生成器也很流行，于是我就试了一下，感觉很不错的说，只是要用markdown来写东西这点让我比较不爽。
+</p>
+
+<p>
+我当时不懂markdown，当然，学会markdown的语法估计也不过半天的事，但是写程序的人有时候是很偏执的：既然我刚弄懂org mode，为什么不能用org mode来写东西呢？遂去Google了一番，发现了<a href="https://github.com/renard/o-blog">o-blog</a>这么个东东，大喜过望，一试，发现除了他给的example能正常生成html之外，我自己写的org文件一个都不能生成，在运行的时候不是这里报 <code>wrong-type-of-argument</code> 错误，就是那里报 <code>wrong-number-of-arguments</code> 错误，而且我看他提供的example里面，除了org mode本身提供的一些语法规定之外，还多了很多自定义的东西，比方说 <code>#+begin_o_blog_row</code> 这样的东东，然而这些额外的语法又没有特别详细的说明。于是，“为什么不自己写一个以org文件作为源的静态站点生成器呢？”这个想法就这样形成了。
+</p>
+
+<p>
+程序开写三把火，说写就写，但关键是我当时基本是没有 <code>Elisp</code> 或者任何 <code>lisp</code> 方言方面的知识的，于是，开始看<a href="http://www.gnu.org/software/emacs/manual/html_mono/elisp.html">GNU Emacs Lisp Reference Manual</a>，啃英文，愣是看到了Macros那一章（后面没有继续看，因为我觉得前十二章的内容对当前的我来说已经够用了），然后，就开始写了，名字就叫做org-page。
+</p>
+
+<p>
+写了一点之后，我发现就算是写一个org to html的解析器都不是一件容易事，同时也发现了原来org mode已经内置了publish html的功能，但是默认功能太过简单，于是，我就去看 <code>org-publish.el</code> 和 <code>org-html.el</code> 两个文件，希望实现一些hack，然后我发现org publish的自定义功能还是相当强大的，于是，我就开始了基于org publish的自定义。
+</p>
+
+<p>
+很快，org-page的0.1版本出来了，实现了一些基本的feature，比方说page header、footer以及样式的自定义。这个过程我写得相当吃力，因为基本上任何一个函数我都需要用 <code>C-h f</code> 去查的。
+</p>
+
+<p>
+悲剧的是，0.1版本出来后，项目开始忙了，而且因为大规模的同事离职（到最后我们team只剩两个开发人员，一个我，还有一个，是team leader，大家都懂的），我一个人扛了比较多的任务，基本上白天时间都是在跟人交流，什么Email，电话，OC，远程桌面什么的，只有等晚上大家都下班后，我才有时间coding。于是，org-page，我就只能给放那儿了。
+</p>
+
+<p>
+就这么过了几个月，忙完了，我又开始闲了，而且是闲得蛋疼，一天基本收不到一封需要我仔细读，然后去处理的mail，也没人给我打电话。在看了几天书后，发现了躺在硬盘某个角落里的——org-page。
+</p>
+
+<p>
+其实那时，我最初头脑一热的念头早就散尽（如果要我那时再去看Emacs Lisp Manual，我是万万不会愿意的），但是想，闲着也是闲着，而且蛋还疼，看书也没意思，还是找点事做吧，于是，就重新捡起了org-page。
+</p>
+
+<p>
+到阁下现在看到的这里，org-page的0.2版本已经出来了。至于为什么不直接叫1.0版本，是因为还有一个在规划当中的RSS订阅的feature没有实现，我觉得对于我来说，目前最重要的，是将以前写的一些org文件先整理好给发出来，围观的人不多，RSS功能实现了也没什么用。所以，虽然还有一个feature没实现，我还是义无反顾地执行了 <code>git tag v0.2</code> 。
+</p>
+
+<p>
+那么，以上就是org-page到现在为止的整个历史，作为一个demo site（至少目前只是demo），本打算随便写些test之类的内容就算了，后来想想，既然是给别人demo，还是写点正规的东东吧，于是就打算写点org-page的使用方法之类的，但没想到的是，作为一个文艺青年:-D，写着写着，就写成了《org-page的成长史》。 :-P
+</p>
+
+<p>
+那么，就到这里吧。
+</p>
+
+</div>
+</div>
+<div>
+  <div class="post-meta">
+    <span title="post date" class="post-info">2012-11-27</span>
+    <span title="last modification date" class="post-info">2016-02-01</span>
+    <span title="tags" class="post-info"><a href="/tags/org-page/">Org-page</a>, <a href="/tags/misc/">Misc</a></span>
+    <span title="author" class="post-info">Kelvin Hu</span>
+  </div>
+  <script src="/media/js/jquery-2.1.3.min.js"></script>
+  <section>
+    <h1>Comments</h1>
+    <div id="comment-wrap">
+      <a class="disqus_label">使用Disqus评论</a>
+      <a class="ds-label">使用多说评论</a>
+    </ul>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+     //var disqus_developer = 1;
+     var preempt_signal=false;
+     var disqus_identifier = "/blog/2012/11/27/growth-process-of-org-page/";
+     var disqus_url = "https://victor72.github.io/blog/2012/11/27/growth-process-of-org-page/";
+     var disqus_shortname = 'victor72githubio';
+     /* * * DON'T EDIT BELOW THIS LINE * * */
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       $('#disqus_thread').css('display','none');
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </section>
+  <script src="/media/js/kdComment.js"></script>
+  <div class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+    <p>
+      Copyright &copy; 2014 - <span id="footerYear"></span> <a href="mailto:ini &lt;dot&gt; kelvin &lt;at&gt; gmail &lt;dot&gt; com">Kelvin Hu</a>
+      &nbsp;&nbsp;-&nbsp;&nbsp;
+      Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a><br/>
+      Themed with <a href="https://github.com/kuangdash/emacs_love" target="_blank">emacs_love</a>
+      <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+  </div>
+    </div>
+
+  </body>
+</html>

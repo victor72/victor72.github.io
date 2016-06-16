@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>windows系统中Emacs的HOME目录及配置文件的正确路径 - 日知录</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="Kelvin Hu" />
+  <meta name="description" content="how to set emacs home directory on windows" />
+  <meta name="keywords" content="emacs, windows" />
+  <style>
+   #ds-thread #ds-reset .ds-comment-body p {color: #ffffff;}
+   #disqus_thread a {color: #00ffff;}
+  </style>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/kdComment.css" type="text/css">
+  <script type="text/javascript"
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+
+  <body class="container">
+<div>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">日知录</a></h1>
+    <p>学而不思则殆</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/wiki/">Wiki</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/victor72/victor72.github.io">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="http://www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="victor72.github.io">
+    </form>
+  </header>
+</div>
+
+<div>
+<div class="post">
+<h1 class="title">windows系统中Emacs的HOME目录及配置文件的正确路径</h1>
+<p>
+<b>这是我在博客园的博客中的文章。</b>
+</p>
+
+<p>
+下面是原文（未大改，稍作了一些格式上的调整）：
+</p>
+
+<hr  />
+
+<p>
+最近爱折腾的毛病又犯了，开始折腾起Emacs，在自定义Emacs的配置文件存放位置时遇到一点问题，不过，在GNU的Emacs站点，看到这么一段话：
+</p>
+
+<blockquote>
+<p>
+On Windows, the .emacs file may be called _emacs for backward compatibility with DOS and FAT filesystems where filenames could not start with a dot. Some users prefer to continue using such a name, because Explorer cannot create a file with a name starting with a dot, even though the filesystem and most other programs can handle it. In Emacs 22 and later, the init file may also be called <code>.emacs.d/init.el</code>. Many of the other files that are created by lisp packages are now stored in the <code>.emacs.d</code> directory too, so this keeps all your Emacs related files in one place.
+</p>
+
+<p>
+All the files mentioned above should go in your <code>HOME</code> directory. The <code>HOME</code> directory is determined by following the steps below:
+</p>
+
+<ol class="org-ol">
+<li>If the environment variableHOME is set, use the directory it indicates.
+</li>
+<li>If the registry entry <code>HKCU\SOFTWARE\GNU\Emacs\HOME</code> is set, use the directory it indicates.
+</li>
+<li>If the registry entry <code>HKLM\SOFTWARE\GNU\Emacs\HOME</code> is set, use the directory it indicates. Not recommended, as it results in users sharing the same HOME directory.
+</li>
+<li>If <code>C:\.emacs</code> exists, then use <code>C:/</code>. This is for backward compatibility, as previous versions defaulted to <code>C:/</code> if <code>HOME</code> was not set.
+</li>
+<li>Use the user's AppData directory, usually a directory called <code>Application Data</code> under the user's profile directory, the location of which varies according to Windows version and whether the computer is part of a domain.
+</li>
+</ol>
+</blockquote>
+
+<p>
+也就是说，Emacs的配置文件有三种格式：.emacs文件、_emacs文件或者.emacs.d目录下的init.el（22或者更高版本）文件，但是，不管哪种格式，必须放对正确的目录Emacs才能找到，这个正确的目录就是HOME目录。
+</p>
+
+<p>
+熟悉Linux的朋友一般都知道home目录，简单的用~表示，或者用全路径表示为/home/&lt;xxx&gt;，其中xxx表示用户名字，所以，在Linux下将.emacs和.emacs.d放到这个目录下就行了，但windows没有home目录的概念，所以，Emacs就按如下方式来查找配置文件：
+</p>
+
+<ol class="org-ol">
+<li>如果设置了HOME环境变量，那么就用它的值作为home目录~
+</li>
+<li>如果存在注册表键值HKCU\SOFTWARE\GNU\Emacs\HOME，就用它的值作为home目录~
+</li>
+<li>如果存在注册表键值HKLM\SOFTWARE\GNU\Emacs\HOME，就用它的值作为home目录~（和2的区别是，2只是针对当前用户的注册表路径，3则是针对所有用户）
+</li>
+<li>如果存在C:\.emacs，就用C:\作为home目录~
+</li>
+<li>如果以上都不存在的话，就使用&lt;system root&gt;\Users\&lt;user name&gt;\AppData\Roaming作为home目录~（对于XP和较早windows用户，需要到Documents and Settings目录下去找）
+</li>
+</ol>
+
+<p>
+<del>从以上策略来看，1是比较好的做法，所以优先级也最高，应该是属于建议的方式，于是，新建一个HOME环境变量，将它的值设为想要放置Emacs配置文件的地方既可。</del>
+</p>
+
+<p>
+之前我是按以上方法设置的HOME目录，不过现在我后悔了，因为我发现不光是Emacs会使用HOME这个环境变量，会使用这个变量的至少还有以下程序或者插件：
+</p>
+
+<ol class="org-ol">
+<li>VIM，VIM会把_viminfo文件放在这个目录；
+</li>
+<li>VIM的neocomplcache插件，它会放置一个.neocon目录进去；
+</li>
+<li>firefox的pentadactyl插件，它会放一个pentadactyl目录进去。
+</li>
+</ol>
+
+<p>
+<b>所以，个人建议：</b>
+</p>
+
+<ol class="org-ol">
+<li><b>如果你希望有一个公共的目录存放这些配置，就像Linux下的~目录一样，那么设置HOME这个环境变量最适合不过；</b>
+</li>
+<li><b>如果你希望这个目录只存放Emacs的配置，那么，还是不要用HOME环境变量了，去注册表里面添加一个HOME键值吧。（至少我个人比较偏向于这个方式）</b>
+</li>
+</ol>
+
+</div>
+</div>
+<div>
+  <div class="post-meta">
+    <span title="post date" class="post-info">2012-04-27</span>
+    <span title="last modification date" class="post-info">2016-02-01</span>
+    <span title="tags" class="post-info"><a href="/tags/emacs/">Emacs</a>, <a href="/tags/windows/">Windows</a></span>
+    <span title="author" class="post-info">Kelvin Hu</span>
+  </div>
+  <script src="/media/js/jquery-2.1.3.min.js"></script>
+  <section>
+    <h1>Comments</h1>
+    <div id="comment-wrap">
+      <a class="disqus_label">使用Disqus评论</a>
+      <a class="ds-label">使用多说评论</a>
+    </ul>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+     //var disqus_developer = 1;
+     var preempt_signal=false;
+     var disqus_identifier = "/blog/2012/04/27/set-emacs-home-directory-on-windows/";
+     var disqus_url = "https://victor72.github.io/blog/2012/04/27/set-emacs-home-directory-on-windows/";
+     var disqus_shortname = 'victor72githubio';
+     /* * * DON'T EDIT BELOW THIS LINE * * */
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       $('#disqus_thread').css('display','none');
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </section>
+  <script src="/media/js/kdComment.js"></script>
+  <div class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+    <p>
+      Copyright &copy; 2014 - <span id="footerYear"></span> <a href="mailto:ini &lt;dot&gt; kelvin &lt;at&gt; gmail &lt;dot&gt; com">Kelvin Hu</a>
+      &nbsp;&nbsp;-&nbsp;&nbsp;
+      Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a><br/>
+      Themed with <a href="https://github.com/kuangdash/emacs_love" target="_blank">emacs_love</a>
+      <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+  </div>
+    </div>
+
+  </body>
+</html>
