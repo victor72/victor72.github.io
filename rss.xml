@@ -4,79 +4,79 @@
     <title>日知录</title>
     <link>https://victor72.github.io/</link>
     <description>学而不思则殆</description>
-    <pubDate>星期五, 17 六月 2016 04:02:56 中国标准时间</pubDate>
-    <lastBuildDate>星期五, 17 六月 2016 04:02:56 中国标准时间</lastBuildDate>
+    <pubDate>星期四, 23 六月 2016 22:44:42 中国标准时间</pubDate>
+    <lastBuildDate>星期四, 23 六月 2016 22:44:42 中国标准时间</lastBuildDate>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>Org-page static site generator (https://github.com/kelvinh/org-page)</generator>
+    <item>
+      <title>菲尔•科林斯</title>
+      <link>https://victor72.github.io/blog/2016/06/17/phil-collins/</link>
+      <description><![CDATA[the great singer phil collins]]></description>
+      <pubDate>2016-06-23</pubDate>
+      <guid>https://victor72.github.io/blog/2016/06/17/phil-collins/</guid>
+    </item>
+    <item>
+      <title>html 与 css 基础</title>
+      <link>https://victor72.github.io/blog/2016/06/22/html-css-primary/</link>
+      <description><![CDATA[html 与 css 基础 ]]></description>
+      <pubDate>2016-06-23</pubDate>
+      <guid>https://victor72.github.io/blog/2016/06/22/html-css-primary/</guid>
+    </item>
+    <item>
+      <title>HTML5 —— APlayer 音乐播放器</title>
+      <link>https://victor72.github.io/blog/2016/06/18/html5-audio-player/</link>
+      <description><![CDATA[HTML5 —— APlayer 音乐播放器]]></description>
+      <pubDate>2016-06-23</pubDate>
+      <guid>https://victor72.github.io/blog/2016/06/18/html5-audio-player/</guid>
+    </item>
+    <item>
+      <title>我的日常计划</title>
+      <link>https://victor72.github.io/blog/2016/06/20/my-agenda/</link>
+      <description><![CDATA[我的日常计划]]></description>
+      <pubDate>2016-06-21</pubDate>
+      <guid>https://victor72.github.io/blog/2016/06/20/my-agenda/</guid>
+    </item>
+    <item>
+      <title>我的纪念日</title>
+      <link>https://victor72.github.io/blog/2016/06/21/my-anniversary/</link>
+      <description><![CDATA[我的纪念日]]></description>
+      <pubDate>2016-06-21</pubDate>
+      <guid>https://victor72.github.io/blog/2016/06/21/my-anniversary/</guid>
+    </item>
+    <item>
+      <title>冯友兰的哲学与文集</title>
+      <link>https://victor72.github.io/blog/2016/06/21/The-Corpus-of-Feng-You-Lan/</link>
+      <description><![CDATA[The Corpus of Feng You Lan]]></description>
+      <pubDate>2016-06-21</pubDate>
+      <guid>https://victor72.github.io/blog/2016/06/21/The-Corpus-of-Feng-You-Lan/</guid>
+    </item>
+    <item>
+      <title>使用 org-mode 管理日常事务</title>
+      <link>https://victor72.github.io/blog/2016/06/20/with-org-page-manage-lives/</link>
+      <description><![CDATA[使用 org-mode 管理日常事务]]></description>
+      <pubDate>2016-06-21</pubDate>
+      <guid>https://victor72.github.io/blog/2016/06/20/with-org-page-manage-lives/</guid>
+    </item>
+    <item>
+      <title>最好的文档编辑利器 Org-mode</title>
+      <link>https://victor72.github.io/blog/2016/06/16/edit-with-org-mode/</link>
+      <description><![CDATA[最好的文档编辑利器 Org-mode]]></description>
+      <pubDate>2016-06-20</pubDate>
+      <guid>https://victor72.github.io/blog/2016/06/16/edit-with-org-mode/</guid>
+    </item>
+    <item>
+      <title>org-mode 入门教程</title>
+      <link>https://victor72.github.io/blog/2016/06/16/org-mode-tutorial/</link>
+      <description><![CDATA[org-mode 入门教程]]></description>
+      <pubDate>2016-06-18</pubDate>
+      <guid>https://victor72.github.io/blog/2016/06/16/org-mode-tutorial/</guid>
+    </item>
     <item>
       <title>使用 org-page 搭建个人博客</title>
       <link>https://victor72.github.io/blog/2016/06/16/with-org-page-setup-up-personal-blog/</link>
       <description><![CDATA[使用 org-page 搭建个人博客]]></description>
-      <pubDate>2016-06-17</pubDate>
+      <pubDate>2016-06-18</pubDate>
       <guid>https://victor72.github.io/blog/2016/06/16/with-org-page-setup-up-personal-blog/</guid>
-    </item>
-    <item>
-      <title>动态代理与拦截器的实现原理剖析</title>
-      <link>https://victor72.github.io/blog/2010/03/14/dynamic-proxy-implementation-analytics/</link>
-      <description><![CDATA[java dynamic proxy source code analytics]]></description>
-      <pubDate>2016-02-01</pubDate>
-      <guid>https://victor72.github.io/blog/2010/03/14/dynamic-proxy-implementation-analytics/</guid>
-    </item>
-    <item>
-      <title>让Windows版本的Emacs支持图片直接显示</title>
-      <link>https://victor72.github.io/blog/2013/03/26/emacs-image-support-on-windows/</link>
-      <description><![CDATA[how to make emacs support images on windows]]></description>
-      <pubDate>2016-02-01</pubDate>
-      <guid>https://victor72.github.io/blog/2013/03/26/emacs-image-support-on-windows/</guid>
-    </item>
-    <item>
-      <title>windows平台Emacs单实例原理、设置及右键菜单的添加</title>
-      <link>https://victor72.github.io/blog/2012/04/28/add-emacs-to-context-menu-on-windows/</link>
-      <description><![CDATA[how to add emacs to context menu on windows]]></description>
-      <pubDate>2016-02-01</pubDate>
-      <guid>https://victor72.github.io/blog/2012/04/28/add-emacs-to-context-menu-on-windows/</guid>
-    </item>
-    <item>
-      <title>windows系统中Emacs的HOME目录及配置文件的正确路径</title>
-      <link>https://victor72.github.io/blog/2012/04/27/set-emacs-home-directory-on-windows/</link>
-      <description><![CDATA[how to set emacs home directory on windows]]></description>
-      <pubDate>2016-02-01</pubDate>
-      <guid>https://victor72.github.io/blog/2012/04/27/set-emacs-home-directory-on-windows/</guid>
-    </item>
-    <item>
-      <title>在Emacs中为Scheme设置更为舒服的编程环境</title>
-      <link>https://victor72.github.io/blog/2013/07/21/scheme-configuration-in-emacs/</link>
-      <description><![CDATA[how to make a better programming environment in emacs for scheme]]></description>
-      <pubDate>2016-02-01</pubDate>
-      <guid>https://victor72.github.io/blog/2013/07/21/scheme-configuration-in-emacs/</guid>
-    </item>
-    <item>
-      <title>org-page的成长史</title>
-      <link>https://victor72.github.io/blog/2012/11/27/growth-process-of-org-page/</link>
-      <description><![CDATA[my diary about org-page, written in Chinese]]></description>
-      <pubDate>2016-02-01</pubDate>
-      <guid>https://victor72.github.io/blog/2012/11/27/growth-process-of-org-page/</guid>
-    </item>
-    <item>
-      <title>Linux通过shell实现递归列目录及对文件的处理</title>
-      <link>https://victor72.github.io/blog/2012/03/23/recursively-list-directories-and-process-files-in-shell/</link>
-      <description><![CDATA[how to recursively list directories through shell]]></description>
-      <pubDate>2016-02-01</pubDate>
-      <guid>https://victor72.github.io/blog/2012/03/23/recursively-list-directories-and-process-files-in-shell/</guid>
-    </item>
-    <item>
-      <title>岁月如歌——甘十九妹</title>
-      <link>https://victor72.github.io/blog/2016/01/24/time-is-like-a-song/</link>
-      <description><![CDATA[回忆往事，岁月如歌]]></description>
-      <pubDate>2016-02-01</pubDate>
-      <guid>https://victor72.github.io/blog/2016/01/24/time-is-like-a-song/</guid>
-    </item>
-    <item>
-      <title>关于Archlinux的一些使用技巧</title>
-      <link>https://victor72.github.io/wiki/archlinux/</link>
-      <description><![CDATA[small skills/tips learned during using my archlinux]]></description>
-      <pubDate>2016-02-01</pubDate>
-      <guid>https://victor72.github.io/wiki/archlinux/</guid>
     </item>
   </channel>
 </rss>
