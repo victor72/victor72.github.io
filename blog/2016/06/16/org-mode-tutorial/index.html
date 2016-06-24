@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>org-mode 入门教程 - 日知录</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="Victor72" />
+  <meta name="description" content="org-mode 入门教程" />
+  <meta name="keywords" content="emacs, org-mode, tutorial" />
+  <style>
+   #ds-thread #ds-reset .ds-comment-body p {color: #ffffff;}
+   #disqus_thread a {color: #00ffff;}
+  </style>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/kdComment.css" type="text/css">
+  <script type="text/javascript"
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+
+  <body class="container">
+<div>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">日知录</a></h1>
+    <p>学而不思则殆</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
+        <li><a href="/life/">生活</a></li>
+        <li><a href="/study/">格物</a></li>
+        <li><a href="/ideology/">致知</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/victor72/victor72.github.io">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="http://www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="victor72.github.io">
+    </form>
+  </header>
+</div>
+
+<div>
+<div class="post">
+<h1 class="title">org-mode 入门教程</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">安装</a>
+<ul>
+<li><a href="#sec-1-1">配置</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">实例教程</a>
+<ul>
+<li><a href="#sec-2-1">常用控制键表述</a></li>
+<li><a href="#sec-2-2">新建文件</a></li>
+<li><a href="#sec-2-3">章节</a></li>
+<li><a href="#sec-2-4">列项</a>
+<ul>
+<li><a href="#sec-2-4-1">常用列项快捷键：</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-5">脚注</a></li>
+<li><a href="#sec-2-6">表格</a></li>
+<li><a href="#sec-2-7">链接</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+　　org-mode是Emacs提供的一个强大的编辑模式，可以用于做会议笔记以及制作各种待办事项（GDT）。其语法类似于Markdown但是提供了比Markdown更多的操作，再加上Emacs强大的编辑功能，能给笔记增加很多动态的操作（能纯文本上实现折叠、展开、树状视图、表格求和、求代码运行结果等功能），可以说org-mode是最强大的标记语言。而org-mode的强大，也导致了他比markdown更加复杂，需要花些时间来练习，本文选出了org-mode最强大、实用的功能，进行最简单的介绍，下面介绍org-mode的使用方法。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">安装</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+　　Emacs最新版本（24.4）自带org-mode，这就意味着只要打开一个后缀名为org的文件就会自动进入org-mode。因此我们只需要下载最新版的Emacs即可。
+　　
+</p>
+<ul class="org-ul">
+<li>windows 用户：到<a href="http://ftp.gnu.org/gnu/emacs/windows/">http://ftp.gnu.org/gnu/emacs/windows/</a> 下载最新版
+</li>
+<li>ubuntu 系列：在终端中输入：sudo apt-get install emacs 
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">配置</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+　　org-mode功能基本比较完善，不需要更多的配置，但是org模式下默认没有自动换行的功能，我们在.emacs文件里面添加如下代码，实现自动换行：
+</p>
+
+<pre class="example">
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+</pre>
+<p>
+　　
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">实例教程</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+　
+　　以下分别讲解org-mode下几个实用的功能，更完整的教程可以参考官网教程。下面一步一步完成我们的org文件。
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">常用控制键表述</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+　　本教程中我们定义:
+</p>
+
+<ul class="org-ul">
+<li>C-x 表示 Ctrl+x
+</li>
+<li>M+x 表示 Alt+x
+</li>
+<li>S+x 表示 Shift+x
+</li>
+<li>RET 表示 回车(Enter)
+</li>
+<li>TAB 表示 制表(tab)
+</li>
+</ul>
+
+<p>
+　　这也是Emacs的标准定义。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">新建文件</h3>
+<div class="outline-text-3" id="text-2-2">
+<ol class="org-ol">
+<li>打开 Emacs
+</li>
+<li>输入 C-x C-f ～/ MyPage/test.org 
+</li>
+</ol>
+
+<p>
+　　注意文件后缀名为org，该命令新建了一个名为test.org的文件。
+</p>
+
+<p>
+　　新建完文件后，我们就可以输入相应的内容了。以下是org-mode语法的具体介绍。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">章节</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+　　org-mode用 * 标识章节，一 个* 代表一级标题，两个 * 代表两级标题，以此类推。
+　　
+　　注意星号后面有空格。可以发现，不同层级标题的颜色是不一样的。按Alt加左右键能够升降标题的层级。一些常用快捷键如下：
+</p>
+
+<ul class="org-ul">
+<li>S+Tab 展开、折叠所有章节 
+</li>
+<li>Tab 对光标所在章节进行展开、折叠 
+</li>
+<li>M+left/right 升级/降级标题 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">列项</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+　　列项是文本中一个比较常用的元素，可以列出各种待完成的事项等。org-mode提供了一种很独特的功能，可以加入checkbok（实际就是加入一对中间有空格的方括号[ ]）标记任务的完成状况，而且如果一个总任务有多个子任务，还可以根据子任务的完成情况计算总进度（只需要在总任务后面添加一对方括号，里面加上%或/ 如<code>[%]</code>,<code>[/]</code>）。列表分为有序和无序两种，有序列表以1.或 1)开头，无序列表以+或-开头 后面，同样，后面要跟一个空格。
+</p>
+
+<p>
+　　我们输入一个无序列表：
+</p>
+
+<ul class="org-ul">
+<li>treeroot  
+<ul class="org-ul">
+<li>branch1
+</li>
+<li>branch2
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+　　在输入的时候，我们按M-RET（Alt+回车）可以自动输入同级的条目，按M+left/right调整层级。同理，我们还可以输入一个有序列表：
+</p>
+
+<ol class="org-ol">
+<li><code>[-]</code> 任务1 <code>[33%]</code>
+<ol class="org-ol">
+<li><code>[&#xa0;]</code> 子任务1
+</li>
+<li><code>[X]</code> 子任务2
+</li>
+<li><code>[&#xa0;]</code> 子任务3
+</li>
+</ol>
+</li>
+<li><code>[&#xa0;]</code> 任务2
+</li>
+</ol>
+
+<p>
+　　我们按M-S-RET 可以输入一个带checkbox的列表项，而在总任务后面可以输入一个<code>[%]</code>或者<code>[/]</code>则能自动计算总任务进度。
+</p>
+</div>
+
+<div id="outline-container-sec-2-4-1" class="outline-4">
+<h4 id="sec-2-4-1">常用列项快捷键：</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<ul class="org-ul">
+<li>M-RET 插入同级列表项 
+</li>
+<li>M-S-RET 插入有 checkbox的同级列表项 
+</li>
+<li>C-c C-c 改变 checkbox状态 
+</li>
+<li>M-left/right 改变列表项层级关系 
+-M-up/dowm 上下移动列表项 
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">脚注</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+　　用<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>的方式插入脚注，而在最下面插入　
+</p>
+
+<p>
+<sup><a id="fnr.1.100" name="fnr.1.100" class="footref" href="#fn.1">1</a></sup> 本文参考自 <a href="http://orgmode.org/orgguide.pdf">http://orgmode.org/orgguide.pdf</a>
+</p>
+
+<p>
+　　这个标签是可以点击的。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6">表格</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+　　表格常用于数据展示，org-mode提供了方便的列表操作。其中最独特的是支持类似于Excel的表格函数，可以完成简单的求和等操作。
+</p>
+
+<p>
+　　创建表格时，在新建表格时，首先输入表头：
+</p>
+
+<p>
+　　然后在第二行后面按 tab，表格就会自动生成：
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="right">Phone</th>
+<th scope="col" class="right">sub1</th>
+<th scope="col" class="right">sub2</th>
+<th scope="col" class="right">total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">maple</td>
+<td class="right">134...</td>
+<td class="right">89</td>
+<td class="right">98</td>
+<td class="right">187</td>
+</tr>
+
+<tr>
+<td class="left">wizard</td>
+<td class="right">152...</td>
+<td class="right">78</td>
+<td class="right">65</td>
+<td class="right">143</td>
+</tr>
+
+<tr>
+<td class="left">Hello World</td>
+<td class="right">123...</td>
+<td class="right">76</td>
+<td class="right">87</td>
+<td class="right">163</td>
+</tr>
+
+<tr>
+<td class="left">hehe</td>
+<td class="right">157...</td>
+<td class="right">87</td>
+<td class="right">78</td>
+<td class="right">165</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+　　下面我们填入一些数据，在填写的过程中，按Tab键可以调到右方表格，按Enter则能跳到下方表格。如果同时按住Shift，则是反方向跳。输入表格完成后，按 C-c C-c则能自动对齐表格，输入完成对齐后，表格如下：
+</p>
+
+<p>
+　　下面我们来体验下org-mode的强大的表格函数。我们在total列任选一个位置，输入=$3+$4 ，然后按C-u C-c C-c ，org-mode便能自动为我们计算所有三列加四列的和，并放到第五列。最后完成的表格如下：
+</p>
+
+<p>
+　　如果要插入行和列，可在表头添加一个标签或者新起一行，输入|再调整格式即可。其中最后一行是ogr-mode自动添加的。一些快捷键如下：
+</p>
+
+<ul class="org-ul">
+<li>C-c | 通过输入大小的方式插入表格 
+</li>
+<li>C-c C-c 对齐表格 
+</li>
+<li>Tab 调到右边一个表格 
+</li>
+<li>enter 跳到下方的表格 
+</li>
+<li>M-up/right/left/right 上下左右移动行（列） 
+</li>
+<li>M-S-up/right/left/right 向上下左右插入行（列） 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7">链接</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+　　链接用于链接一些资源地址，如图片、文件、URL等。
+</p>
+
+<p>
+　　链接的格式是：
+</p>
+
+<pre class="example">
+[[链接地址][链接内容]]
+</pre>
+
+<p>
+　　如：
+</p>
+
+<pre class="example">
+[[http://orgmode.org/orgguide.pdf][grgguid.pdf]]
+
+[[file:./bluemix-graphic.png][a picture]]
+</pre>
+
+<p>
+　　如果去掉标签，则能直接显示图片：
+</p>
+
+<pre class="example">
+[[file:./bluemix-graphic.png]]
+</pre>
+
+<p>
+　　直接显示的图片在Emacs里默认不显示，需按C-c C-x C-v才能显示，在输出成其他格式（html、pdf……）后也能看到。
+</p>
+
+<p>
+　　常用快捷键：
+</p>
+
+<ul class="org-ul">
+<li>C-c C-x C-v 直接预览图片。 
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>DEFINITION NOT FOUND.</p></div>
+
+
+</div>
+</div>
+</div>
+</div>
+<div>
+  <div class="post-meta">
+    <span title="post date" class="post-info">2016-06-16</span>
+    <span title="last modification date" class="post-info">2016-06-18</span>
+    <span title="tags" class="post-info"><a href="/tags/emacs/">Emacs</a>, <a href="/tags/org-mode/">Org-mode</a>, <a href="/tags/tutorial/">Tutorial</a></span>
+    <span title="author" class="post-info">Victor72</span>
+  </div>
+  <script src="/media/js/jquery-2.1.3.min.js"></script>
+  <section>
+    <h1>Comments</h1>
+    <div id="comment-wrap">
+      <a class="disqus_label">使用Disqus评论</a>
+      <a class="ds-label">使用多说评论</a>
+    </ul>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+     //var disqus_developer = 1;
+     var preempt_signal=false;
+     var disqus_identifier = "/blog/2016/06/16/org-mode-tutorial/";
+     var disqus_url = "https://victor72.github.io/blog/2016/06/16/org-mode-tutorial/";
+     var disqus_shortname = 'victor72githubio';
+     /* * * DON'T EDIT BELOW THIS LINE * * */
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       $('#disqus_thread').css('display','none');
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </section>
+  <script src="/media/js/kdComment.js"></script>
+  <div class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+    <p>
+      Copyright &copy; 2014 - <span id="footerYear"></span> <a href="mailto:victoryman &lt;at&gt; 126 &lt;dot&gt; com">Victor72</a>
+      &nbsp;&nbsp;-&nbsp;&nbsp;
+      Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a><br/>
+      Themed with <a href="https://github.com/kuangdash/emacs_love" target="_blank">emacs_love</a>
+      <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+  </div>
+    </div>
+
+  </body>
+</html>

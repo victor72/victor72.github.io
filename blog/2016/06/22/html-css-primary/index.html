@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>html 与 css 基础 - 日知录</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="Victor72" />
+  <meta name="description" content="html 与 css 基础 " />
+  <meta name="keywords" content="html, css" />
+  <style>
+   #ds-thread #ds-reset .ds-comment-body p {color: #ffffff;}
+   #disqus_thread a {color: #00ffff;}
+  </style>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/kdComment.css" type="text/css">
+  <script type="text/javascript"
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+
+  <body class="container">
+<div>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">日知录</a></h1>
+    <p>学而不思则殆</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
+        <li><a href="/life/">生活</a></li>
+        <li><a href="/study/">格物</a></li>
+        <li><a href="/ideology/">致知</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/victor72/victor72.github.io">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="http://www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="victor72.github.io">
+    </form>
+  </header>
+</div>
+
+<div>
+<div class="post">
+<h1 class="title">html 与 css 基础</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">写在前面的话</a>
+<ul>
+<li><a href="#sec-1-1">我为啥要学这个东东</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">讲一点 HTML + CSS 的原理</a>
+<ul>
+<li><a href="#sec-2-1">html的内容与布局：元素内容+格式化属性+嵌套结构</a></li>
+<li><a href="#sec-2-2">html内容与css样式分离：分层块与跨行内联结构+分类选择+层叠样式</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">写在前面的话</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+这一天看了 <a href="http://JesseZhao.cnblogs.com">JesseZhao(赵光)</a> 一篇叫做 <code>Div+CSS 布局大全</code> 的 pdf 文档（ <del>已忘记从哪里下载的了</del> ），写的浅显易懂，适合我这样的菜鸟。这会顺便做点笔记。
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">我为啥要学这个东东</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+诺大年纪，还学这么老旧的玩意，真是闲的蛋疼么？非也，我这段时间其实很忙，很缺睡眠，可以说负责任的说，我真的很累，可是我更爱折腾。我这个毛病，间歇、周期性的，一旦发作，简直停不下来。这次发起，大概快两个礼拜了。
+</p>
+
+<p>
+那到底为滴个啥呢，当然是觉得这玩意其实还不过时，在我看来，简直永远也不会过时，因为从 <code>HTML</code> 最初被发明出来时候它的初衷应用场景来说，它还是最好的。
+</p>
+
+<p>
+嗨，一抬头，看见 <code>JesseZhao(赵光)</code> 在他博客（好像弃用很多年了哈）签名档处放的这首小诗，觉得有点意思，抄下来膜拜一下吧：
+</p>
+
+<p class="verse">
+未曾清贫难成人,<br  />
+不经打击老天真。<br  />
+自古英雄出炼狱,<br  />
+从来富贵入凡尘。<br  />
+</p>
+
+<p>
+它究竟好在哪里呢，简洁。 <code>HTML：HyperText Markup Language</code> ，翻译成国语，就是 <code>超文本标记语言</code> 。什么意思呢，利用一些简便的“标记”，实现对纯文本的“格式化”展示，这就是 <code>HTML</code> 最初被发明的本意。假如它一直保持纯洁，只是用于美观一些地展示文本内容，而初衷不改的话，那就不会有那么多的好心广告、花边小电影不期然跳出来丰富人们的视觉享受，在得到感官刺激的同时，逐渐让我们心浮气躁，由爱生恨。这是怎么回事呢，这是因为 <code>HTML</code> 标签只是一些“字符标记”，在变成屏幕展示的时候，需要 <code>浏览器</code> 内置的程序对它进行解释和图形渲染，而以 <code>Micro Soft IE</code> 为代表的浏览器们，不知何故（我想主要还是商业冲动吧），为 HTML 加入了其语言标准之外的“嵌入元素”和“对象元素”以满足“多媒体”内容展示的需要，可是浏览器本身又不能提供对这些嵌入式元素的渲染功能，需要根据多样化的多媒体内容特点，另行下载（浏览者本地不具备情况下）多媒体插件来进行本地化的媒体播放。正是由于多媒体类型的多样性，插件越搞越多，尤其是在 <code>flash</code> 技术发展和应用的推动下，连游戏这样专业性的图形渲染作业也被放到浏览器中了。不仅仅多媒体，推波助澜的还有另一路怪兽，基于论坛、社交和交易等之类型的具有互动需求的应用，也在浏览器端实现，不过好在他们一般走的是 <code>ASP/PHP 脚本+数据库</code> 路线，从一开始就与 HTML 分道扬镳。神仙也有疲乏的时候，何况人家 HTML 本来就没那么大的野心，它实在不堪重负了。到今天，HTML 和单纯通用性的浏览器已接近被抛弃，让位于 <code>APP</code> 模式了。APP 满天飞，热闹确实是热闹，可这么多的重复开发，浪费资源姑且不论，视觉疲劳有没有？另外，我们一天天走在不断加装 APP 的路上，设备的升级换代变得越来越快，也越来越身不由己。硬件厂商是高兴了，你的钱包真的没有意见吗？！！！
+</p>
+
+<p>
+牢骚归牢骚，可是追求更多感官刺激“欲无止境”的人类毕竟身不由己（据说是因为“自私的基因”在作祟），需求摆在那里，势不可挡。HTML 真的还能用吗？
+</p>
+
+<p>
+首先，对于只是以文字展示为主要诉求的人们来说，比如写博客，个人发表文章的作家、公知、技术控这一类的人来说，我觉着回归最干净、简便的 HTML 模式是最聪明的选择，好处至少如下：
+</p>
+
+<ul class="org-ul">
+<li>省时间，省心。我们知道，只是写文字的东西的话，重点在于思想，顶多追求一点逻辑性，不会节外生枝，浪费额外寻找资料的时间，从而增加写文章的效率。我自己的感受是，每次打算在网络上写一点文字的时候，经常会写着写着，就跑去找点图片，找点影像，或是补充一些关联信息什么的。搜索，筛选再加上整理，折腾半天，回过神来，原本想写的东西，才开了个头。甚至想不起来原本想要写些什么了，最起码原本活跃的思路受阻，不再有写下去的冲动。
+</li>
+
+<li>节省资源，载入效率高。我们知道现在绝大多数提供博客和文章发布功能的网站，基本上都是基于 ASP/PHP 脚本+数据库的模式，他的页面载入效率与 HTML 不可同日而语。影响速度的最大障碍在于对硬盘文件的并发访问。HTML 页面是独立存放静态访问的，很多人同时访问同一个页面的情况毕竟很少。而数据库就不一样了，不可能为每一个用户建立独立的数据库，访问延迟等待乃至失败的情况时刻在发生。直观一点来说吧，一台个人笔记本作为静态网页模式的个人博客服务器绰绰有余，假如使用动态网页的话，只要你稍微有点知名度，并发访问用户数到达成千上万的话，就必须得租用专门的高性能服务器了。
+</li>
+
+<li>便于搭建个人网站，自由不受约束，数据安全得到保障。这一条才是使用 HTML 的真正好处，由于上面提到的原因，要发布个人网页的话，完全没有必要使用公共平台，在自己的个人电脑上发布就可以了（个人建站，很简单，菜鸟也可以一个小时搞掂，另外有文章描述之）。好处就显而易见了：
+
+<ul class="org-ul">
+<li>HTML 学起来容易，算上 css 样式设计，总共也就几十个标签。先掌握几个最基本的，然后边用边学，机灵点的话，简直不需要专门花时间去学习。稍微复杂一点的是 <code>分类管理</code> ，然而由于有了 <code>Emacs + Org-mode</code> （另文描述），也是分分钟搞掂的事情。
+</li>
+<li>可以自由决定，随时上线还是断网。另外，发布也无须别人审查了（当然，责任自负啊！不过即便是在公网，真要出事，也还是责任自负吧，网站会为你挡箭么！）
+</li>
+<li>图片、音视频等消耗空间的资源，想发就发，不再受限制。公网上需要自己找图床，不说免费图床不好找的话，找到了也还需要浪费时间上传。放在自己的硬盘上，空间无限（毕竟硬盘很便宜啊），时间 0 消耗。
+</li>
+<li>安全，还是安全。 关键的关键，你不会一不高兴就终止为自己提供图床服务吧。你的数据一直处于你自己的管控范围，发现有不宜于公开的，随时可以撤回。公网上，可就没那么方便了。
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+当然，缺点也显而易见：
+</p>
+
+<ul class="org-ul">
+<li>知名度和传播范围不好搞大。这个是没办法的事情，不过被“百度、谷歌”检索到，是不受影响的。另外，传播圈子的话，对于有一些作者来说，“话语只同知己言”，这个也就不是问题了。
+</li>
+<li>域名、地址解析和长时在线问题。域名的话，可以先搞一个免费的，借用“花生壳”来搞地址映射。感觉有需要的话，再买一个收费的域名，好像是很便宜吧，反正我大概是不须要的！长时间在线的话，电脑不要关就是了，用不了多少电费。专门买一台电脑，配一个2T的硬盘，那就更加理想了，三五千块钱就搞定。
+</li>
+
+<li>HTML5 时代即将来临。尽管 IE 们有基于商业需要不安分守己恪守规矩的冲动，他们毕竟也开始感受到苦果的滋味。先是 Opera、Mozilla 基金会和苹果这些浏览器厂商于 2004 年组成 <code>WHATWG</code> (Web 超文本应用技术工作组: Web Hypertext Application Technology Working Group)，提出 HTML5 标准草案，然后于 2007 年被国际中立性技术标准机构 <code>W3C</code> (万维网联盟)接受。其主要目的：
+
+<ul class="org-ul">
+<li>引进新的语法特征，如 video、audio 和 canvas 标记，从而在移动设备上“原生地”支持多媒体；
+</li>
+<li>引进本地存储、三维、图形及特效等新的功能，以真正改变用户与文档的交互方式。
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+2014年10月29日，万维网联盟泪流满面地宣布，经过几乎8年的艰辛努力，HTML5 标准规范终于最终制定完成了，并已公开发布。 目前，Firefox、Google Chrome、Opera、Safari 4+、Internet Explorer 9+ 都已支持 HTML5，我们在新潮的页面上，已经看到不再依赖于外部插件，基于 HTML5 的页面上能够以很高超的效率显示生动、漂亮的幻灯片，高解析度的音视频，3D动态相册等梦幻般的的内容了（接下来的几个礼拜我将一一学习和展示）。
+</p>
+
+<ul class="org-ul">
+<li>HTML将带来最为震撼的结果是：它可能会消灭 Flash。许多业内人士表示，HTML 将会最终代替多媒体框架，如 Adobe 的 Flash，尽管短期看来还不是时候，一些主流的大公司已经开始了逐步转向使用 HTML5 的步伐。谷歌于2015年2月26日开始自动将 Flash 广告转换为 HTML5 格式，这可能会加速 HTML5 替代 Flash 的进程。
+</li>
+</ul>
+
+<p>
+哈哈，写这些废话，两个多小时就过去了。言归正传吧，记笔记正式开始。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">讲一点 HTML + CSS 的原理</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+一上来就讲原理这样听起来很“高、大、上”的东西，而且坦白讲，以我的语言和逻辑表述能力，还无法做到把一个“原理性”的东西，讲得不那么“抽象”。这似乎有点变态，但请相信我，学习任何东西，从原理入手，最终看来，是最事半功倍的学习途径。当然，这需要有一个前提，那就是讲述的人能够把握到“原理”的核心，而且能够讲述的不那么凌乱与啰嗦。这其实不容易做到，所以说，一个好的老师，在现实中很宝贵，不是随便便就能碰得到的。我这里勉力为之，嘿嘿！
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">html的内容与布局：元素内容+格式化属性+嵌套结构</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+我们首先回到 HTML 的思路和目标：通过有限的简单“标签”，来描述一个页面。首先我们比较自然地能想到，它需要描述三个东西：内容、格式化和布局。那么最初的设计者怎么解决它们呢？
+</p>
+
+<ul class="org-ul">
+<li>内容。分类，就这么简单，通过枚举大多数人想展示或者说想看到的内容分类，巧妙而高效地解决了这个问题。HTML 把内容分成：
+
+<ul class="org-ul">
+<li>文字。这里指的是单个的字、词这样的基本文字单位，这个不需要标签，计算机文字编码就解决它了。 
+</li>
+<li>段落。 <code>&lt; p &gt; ... &lt; /p &gt;</code>
+</li>
+<li>标题。 <code>&lt; h1 &gt; ... &lt; /h1 &gt;</code>   <code>&lt; h2 &gt; ... &lt; /h2 &gt;</code>
+</li>
+<li>列表项。 <code>&lt; ul &gt;&lt; li &gt; ... &lt; /li &gt;&lt; /ul &gt;</code>
+</li>
+<li>表格。 <code>&lt; table &gt;&lt; tr &gt;&lt; th &gt;....&lt; /th &gt;&lt; td &gt;...&lt; /td &gt;&lt; /tr &gt; &lt; /p &gt;</code>
+</li>
+<li>图像。 <code>&lt; img /&gt;</code>
+</li>
+<li>超链接。 <code>&lt; a &gt;...&lt; /a &gt;</code>
+</li>
+<li>线条。 <code>&lt; hr/ &gt;</code>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+对于文本型页面，主要也就是这么几类内容了，HTML 把它们称为“元素”，上面这么几个专门的“标签”就基本上“一网打尽”了。后来为了支持多媒体内容，增加了非标准的“嵌入”（  <code>&lt; embed &gt;</code> ）和“对象”（ <code>&lt; object &gt;</code> ）元素。
+</p>
+
+<ul class="org-ul">
+<li>格式化。内容的格式化，大概也就是字体、涂色、修饰、背景这么几类，通过给上述元素附加“属性值”来描述。而对于个别“文字”，基于常见的“着重强调”以“醒目”之需求，特别搞了几个专门的“字体变形”标签，如加删除线、变粗、斜体、加下划线，变上、下标等。
+</li>
+<li>布局。布局相对比较麻烦，这也是最初的 HTML 变得越来越“复杂、难搞”的主要原因。最初的设计大概是这么几个思路（这都是我瞎猜的啊）：
+<ul class="org-ul">
+<li>自然排列。按照每一个元素出现的顺序自然排列。这又分为两种情况，一种称为块类元素，如标题、段落、列表项;另一种为跨行类元素，如自然文本、超链接。二者的差别是，块类元素，自动实现分行；而跨行类元素需要使用换行标签 <code>&lt; br/ &gt;</code> 强制换行。元素在其自然位置的定位，则通过“定位属性”来控制其“靠左、居中或靠右”。
+</li>
+<li>嵌套结构。按照自然排列的元素定位，只能针对单一元素分别进行。较为复杂的排版布局，必须是组群性的定位。比如说报纸，一个页面内通常是要开很多“窗口”，每个窗口里头有很多段落，也可以有图片、表格。这个通过元素的嵌套来实现，就是说一个元素内部可以嵌套其他元素，对外部元素的定位影响到其内部嵌入的元素，跟着一起被定位。具备嵌套功能而被变相用于结构布局的元素，最初只有表格（ <code>&lt; table &gt;</code> ）,后来加入了框架（ <code>&lt; frameset &gt;</code> ）。
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">html内容与css样式分离：分层块与跨行内联结构+分类选择+层叠样式</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+可以想象，按照上述原理实现的 html 有什么毛病
+</p>
+
+<p>
+重复格式描述
+</p>
+
+<p>
+css 样式表
+</p>
+<ul class="org-ul">
+<li>描述（定义）和映射：格式描述针对类型进行，格式的映射通过选择器。
+<ul class="org-ul">
+<li>原来的元素，直接以原先的元素名检索对应。
+</li>
+<li>想要自行区分的元素，在html内容描述的时候描述为自定义的块状层（div）和跨行区间（span），  - 在 css 样式描述的时候，基于它们的 id 或者 class 属性值来检索对应。
+</li>
+<li>为了增加统一性，最大化的提高样式描述效率，所有的元素都当做一个“盒子”，其空间定位与格式描述，允许继承和覆盖。
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+就这么简单！事实无数次表明，最高明的思想往往就是最简单的思想。看起来，谁都能够想得到，可就是只有那个神奇的人才能把它发明出来。</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<div>
+  <div class="post-meta">
+    <span title="post date" class="post-info">2016-06-22</span>
+    <span title="last modification date" class="post-info">2016-06-23</span>
+    <span title="tags" class="post-info"><a href="/tags/html/">html</a>, <a href="/tags/css/">css</a></span>
+    <span title="author" class="post-info">Victor72</span>
+  </div>
+  <script src="/media/js/jquery-2.1.3.min.js"></script>
+  <section>
+    <h1>Comments</h1>
+    <div id="comment-wrap">
+      <a class="disqus_label">使用Disqus评论</a>
+      <a class="ds-label">使用多说评论</a>
+    </ul>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+     //var disqus_developer = 1;
+     var preempt_signal=false;
+     var disqus_identifier = "/blog/2016/06/22/html-css-primary/";
+     var disqus_url = "https://victor72.github.io/blog/2016/06/22/html-css-primary/";
+     var disqus_shortname = 'victor72githubio';
+     /* * * DON'T EDIT BELOW THIS LINE * * */
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       $('#disqus_thread').css('display','none');
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </section>
+  <script src="/media/js/kdComment.js"></script>
+  <div class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+    <p>
+      Copyright &copy; 2014 - <span id="footerYear"></span> <a href="mailto:victoryman &lt;at&gt; 126 &lt;dot&gt; com">Victor72</a>
+      &nbsp;&nbsp;-&nbsp;&nbsp;
+      Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a><br/>
+      Themed with <a href="https://github.com/kuangdash/emacs_love" target="_blank">emacs_love</a>
+      <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+  </div>
+    </div>
+
+  </body>
+</html>

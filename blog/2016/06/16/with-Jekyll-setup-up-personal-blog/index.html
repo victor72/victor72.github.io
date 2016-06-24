@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>使用 Jekyll 搭建个人博客 - 日知录</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="Victor72" />
+  <meta name="description" content="使用 Jekyll 搭建个人博客" />
+  <meta name="keywords" content="emacs, org-mode, blog" />
+  <style>
+   #ds-thread #ds-reset .ds-comment-body p {color: #ffffff;}
+   #disqus_thread a {color: #00ffff;}
+  </style>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/kdComment.css" type="text/css">
+  <script type="text/javascript"
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+
+  <body class="container">
+<div>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">日知录</a></h1>
+    <p>学而不思则殆</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
+        <li><a href="/life/">生活</a></li>
+        <li><a href="/study/">格物</a></li>
+        <li><a href="/ideology/">致知</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/victor72/victor72.github.io">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="http://www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="victor72.github.io">
+    </form>
+  </header>
+</div>
+
+<div>
+<div class="post">
+<h1 class="title">使用 Jekyll 搭建个人博客</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">一、使用 GitHub Education 福利</a></li>
+<li><a href="#sec-2">二、使用 GitHub Pages 建站</a></li>
+<li><a href="#sec-3">三、使用 Jekyll 搭建个人博客</a></li>
+<li><a href="#sec-4">四、使用 Jekyll 模板个性化博客</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://xxxxxx/%E4%BD%BF%E7%94%A8%20Jekyll%20%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html">原文链接:文／野子Joey（简书作者）</a>
+</p>
+
+<p>
+　长大后才发现政府建造 <del>GFW</del> 真是太 <del>TM</del> 机智了，由于本人自制力较差，且不说 <del>91porn, youporn</del> 等两性知识网站的超强战斗力，单单一个 <del>Youtube</del> 就可以让我瞬间强撸灰飞烟灭。即使本人意志力足够强，万一不小心点击进了 <del>大纪元</del> ，遭受到了轮子思想的侵袭，动摇了我无条件支持 <del>CCP</del> 的 <del>自干五</del> 情怀那也是极其不好的。
+</p>
+
+<p>
+　　下面问题来了，翻越 <del>GFW</del> 难道一无是处吗？当然不是，可以努力的薅万恶的资本主义国家羊毛嘛。
+</p>
+
+<p>
+　　下面是作者自建 Github 主页的详细过程，教程中部分网站需要 VPN 服务才能登陆，若无法登陆，你懂的。其次，作者使用的设备为 Mac，Windows 用户在部分内容上会有所出入。
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">一、使用 GitHub Education 福利</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Google 输入<a href="https://education.github.com/"> github education</a>, 点击进入，如下图所示。
+</p>
+
+
+<div class="figure">
+<p><img src="./img/github1.png" alt="github1.png" />
+</p>
+</div>
+
+<p>
+点击 Get the pack，如下图。
+</p>
+
+
+<div class="figure">
+<p><img src="./img/github3.png" alt="github3.png" />
+</p>
+</div>
+
+<p>
+点击 Get your pack，如下图。
+</p>
+
+
+<div class="figure">
+<p><img src="./img/github4.png" alt="github4.png" />
+</p>
+</div>
+
+<p>
+接下来，按照网站的要求填写个人信息[你需要拥有校园网邮箱证明你的学生身份，才可以享受福利]。提交表单后，GitHub 需要1-2周的时间审核你的个人身份，然后你会收到这样一封邮件，受宠若惊有木有，反正当时我的内心是，还有服务这么好的公司。
+</p>
+
+
+<div class="figure">
+<p><img src="./img/github5.jpeg" alt="github5.jpeg" />
+</p>
+</div>
+
+<p>
+点开邮件中的链接，你会来到 My pack 的界面，大礼包都在下面啦，可自行浏览。对 Github 个人主页最重要的礼包是 <b>namecheap</b> 一年免费域名。当然 <b>Digital ocean</b> 100刀的福利也是棒棒的， <b>ATOM</b> 编辑器也是写网站的不二选择。
+</p>
+
+
+<div class="figure">
+<p><img src="./img/github6.png" alt="github6.png" />
+</p>
+</div>
+
+<p>
+有了域名礼包后，不急，过会我们才会用到它。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">二、使用 GitHub Pages 建站</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Google 输入 github pages，点击进入，如下图。
+</p>
+
+<p>
+<img src="./img/github2.png" alt="github2.png" />
+Github pages
+</p>
+
+<p>
+按照官网教程，不急，我们一步一步来。
+官网第一步：
+</p>
+
+<p>
+<img src="./img/github5.png" alt="github5.png" />
+Create a repository
+</p>
+
+<p>
+第一步，登陆 GitHub，新建一个 repository, 命名为 你的用户名 + github.io。如我的用户名为 joeyqiang，所以 repository 命名为 joeyqiang.github.io，如下图。
+</p>
+
+<p>
+<img src="./img/github7.png" alt="github7.png" />
+New a respository
+</p>
+
+<p>
+官网第二步：
+</p>
+
+<p>
+<img src="./img/github8.png" alt="github8.png" />
+Paste_Image.png
+</p>
+
+<p>
+我的电脑是 Mac, 选择 GitHub for Mac，然后将线上的 repository 克隆到本地 (我下载了 Github Desktop 用于同步，你也可以使用 Git 同步，看个人喜好)。Clone 后，你会看到如下界面。
+</p>
+
+<p>
+<img src="./img/github9.png" alt="github9.png" />
+Paste_Image.png
+</p>
+
+<p>
+官网第三步：
+</p>
+
+<p>
+<img src="./img/github10.png" alt="github10.png" />
+Create an index file
+</p>
+
+<p>
+好吧，打开 ATOM 编辑器，新建 index.html，输入你心中此时此刻所想，保存，如下图。
+</p>
+
+<p>
+<img src="./img/github11.png" alt="github11.png" />
+ATOM Screenshot
+</p>
+
+<p>
+官网第四步：
+</p>
+
+<p>
+<img src="./img/github12.png" alt="github12.png" />
+Commit &amp; Sync
+</p>
+
+<p>
+打开 GitHub Desktop, 提交更新。
+</p>
+
+<p>
+<img src="./img/github13.png" alt="github13.png" />
+Commit to master
+</p>
+
+<p>
+官网第五步：
+</p>
+
+<p>
+<img src="./img/github14.png" alt="github14.png" />
+Go to the page
+</p>
+
+<p>
+打开你的浏览器，输入你刚建的 repository 的文件名，比如我输入 joeyqiang.github.io。 Bang! You get it. 如下图。
+</p>
+
+<p>
+<img src="./img/github15.png" alt="github15.png" />
+Browse your blog
+</p>
+
+<p>
+现在我们可以绑定私人域名到上面啦。该上文的 Namecheap 登场了。利用 GitHub 礼包中的 unique link 链接到 Namecheap Education。
+</p>
+
+<p>
+<img src="./img/github16.png" alt="github16.png" />
+Namecheap
+</p>
+
+<p>
+输入你喜欢的域名，完成订单。
+</p>
+
+<p>
+<img src="./img/github17.png" alt="github17.png" />
+Order custom domain
+</p>
+
+<p>
+注册 Namecheap，登陆你的帐号，点击 Domain List, 然后点击 MANAGE，如下图。
+</p>
+
+<p>
+<img src="./img/github18.png" alt="github18.png" />
+Manage domain
+</p>
+
+<p>
+点击 Advanced DNS。
+</p>
+
+<p>
+<img src="./img/github19.png" alt="github19.png" />
+Manage DNS
+</p>
+
+<p>
+管理 DNS。
+</p>
+
+<p>
+<img src="./img/github20.png" alt="github20.png" />
+Manage DNS
+</p>
+
+<p>
+添加 A Record，最终结果如下图。
+</p>
+
+<p>
+<img src="./img/github21.png" alt="github21.png" />
+Add record
+</p>
+
+<p>
+打开 GitHub，新建一个 file，如下图。
+</p>
+
+<p>
+<img src="./img/github23.png" alt="github23.png" />
+Create a file
+</p>
+
+<p>
+将 file 命名为 CNAME (全部为大写)，然后添加你的个人域名 (不要带 http 前缀)，保存，pull request 到 master, 如下图。
+</p>
+
+<p>
+<img src="./img/github24.png" alt="github24.png" />
+Edit the file
+</p>
+
+<p>
+我们现在打开浏览器，输入你刚购买的域名，我的是joeyqiang.me，出现了，出现了，出现了，有木有！！！如下图。
+</p>
+
+
+<div class="figure">
+<p><img src="./img/github25.png" alt="github25.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">三、使用 Jekyll 搭建个人博客</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+打开 terminal，安装 Ruby (Mac 已经预装了 Ruby)。可以输入
+ruby --version 去验证是否安装，如下图。
+</p>
+
+<p>
+<img src="./img/github26.png" alt="github26.png" />
+Confirm Ruby
+</p>
+
+<p>
+接下来，输入sudo gem install github-pages，安装 Jekyll (gem update github-pages命令可以用来更新 Jekyll，以免 Github 服务器更新导致网站本地和线上表现不同)，如下图。
+</p>
+
+<p>
+<img src="./img/github27.png" alt="github27.png" />
+Install Jekyll
+</p>
+
+<p>
+之后你需要在 master 下新建一个 file，命名为 Gemfile，输入
+</p>
+
+<p>
+source 'https://rubygems.org'
+</p>
+
+<p>
+gem 'github-pages'
+</p>
+
+<p>
+如下图。
+</p>
+
+<p>
+<img src="./img/github28.png" alt="github28.png" />
+Create Gemfile
+</p>
+
+<p>
+运行 terminal，使用命令行移至 repository 根目录下 (也可以直接在 GitHub Desktop 下右键 repository 打开)，如下图。
+</p>
+
+<p>
+<img src="./img/github29.png" alt="github29.png" />
+Command line to terminal
+</p>
+
+<p>
+<img src="./img/github30.png" alt="github30.png" />
+Right click to root directory
+</p>
+
+<p>
+之后运行
+</p>
+
+<p>
+bundle exec jekyll serve
+</p>
+
+<p>
+如下图。
+</p>
+
+<p>
+<img src="./img/github31.png" alt="github31.png" />
+Running Jekyll
+</p>
+
+<p>
+下面，就可以使用 Jekyll 啦，本地测试在浏览器输入 <a href="http://localhost:4000">http://localhost:4000</a> 即可 (本地测试结束后 commit to master 提交线上即可)，如下图。
+</p>
+
+
+<div class="figure">
+<p><img src="./img/github32.png" alt="github32.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">四、使用 Jekyll 模板个性化博客</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+首先建议大家看下 <a href="https://www.youtube.com/watch?v=IINPHVVrF5Q&list=PLWjCJDeWfDdfVEcLGAfdJn_HXyM4Y7_k-">Youtube Jekyll</a> 这个系列教程，比阅读 <a href="https://jekyllrb.com/">官方文档</a> 快捷容易多了，深入了解则需阅读文档了。我 Jekyll 也是才学，很多地方也在摸索中，欢迎多多交流。
+</p>
+</div>
+</div>
+
+</div>
+</div>
+<div>
+  <div class="post-meta">
+    <span title="post date" class="post-info">2016-06-16</span>
+    <span title="last modification date" class="post-info">2016-06-18</span>
+    <span title="tags" class="post-info"><a href="/tags/emacs/">Emacs</a>, <a href="/tags/org-mode/">Org-mode</a>, <a href="/tags/blog/">Blog</a></span>
+    <span title="author" class="post-info">Victor72</span>
+  </div>
+  <script src="/media/js/jquery-2.1.3.min.js"></script>
+  <section>
+    <h1>Comments</h1>
+    <div id="comment-wrap">
+      <a class="disqus_label">使用Disqus评论</a>
+      <a class="ds-label">使用多说评论</a>
+    </ul>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+     //var disqus_developer = 1;
+     var preempt_signal=false;
+     var disqus_identifier = "/blog/2016/06/16/with-Jekyll-setup-up-personal-blog/";
+     var disqus_url = "https://victor72.github.io/blog/2016/06/16/with-Jekyll-setup-up-personal-blog/";
+     var disqus_shortname = 'victor72githubio';
+     /* * * DON'T EDIT BELOW THIS LINE * * */
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       $('#disqus_thread').css('display','none');
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </section>
+  <script src="/media/js/kdComment.js"></script>
+  <div class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+    <p>
+      Copyright &copy; 2014 - <span id="footerYear"></span> <a href="mailto:victoryman &lt;at&gt; 126 &lt;dot&gt; com">Victor72</a>
+      &nbsp;&nbsp;-&nbsp;&nbsp;
+      Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a><br/>
+      Themed with <a href="https://github.com/kuangdash/emacs_love" target="_blank">emacs_love</a>
+      <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+  </div>
+    </div>
+
+  </body>
+</html>

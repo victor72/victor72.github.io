@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HTML5 —— APlayer 音乐播放器 - 日知录</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="author" content="Victor72" />
+  <meta name="description" content="HTML5 —— APlayer 音乐播放器" />
+  <meta name="keywords" content="html5, player, audio" />
+  <style>
+   #ds-thread #ds-reset .ds-comment-body p {color: #ffffff;}
+   #disqus_thread a {color: #00ffff;}
+  </style>
+  <link rel="stylesheet" media="screen" href="/media/css/font.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="/media/css/main.css" type="text/css">
+  <link rel="stylesheet" href="/media/css/kdComment.css" type="text/css">
+  <script type="text/javascript"
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+
+  <body class="container">
+<div>
+  <header class="masthead">
+    <h1 class="masthead-title"><a href="/">日知录</a></h1>
+    <p>学而不思则殆</p>
+    <nav class="site-nav">
+      <div class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z" fill="#ffff00"/>
+          <path d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z" fill="#ffff00"/>
+          <path d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z" fill="#ffff00"/>
+        </svg>
+      </div>
+      <ul class="trigger">
+        <li><a href="/life/">生活</a></li>
+        <li><a href="/study/">格物</a></li>
+        <li><a href="/ideology/">致知</a></li>
+        <li><a href="/tags/">Tags</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="https://github.com/victor72/victor72.github.io">GitHub</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+    <form method="get" id="searchform" action="http://www.google.com/search">
+      <input type="text" class="field" name="q" id="s" placeholder="Search">
+      <input type="hidden" name="as_sitesearch" value="victor72.github.io">
+    </form>
+  </header>
+</div>
+
+<div>
+<div class="post">
+<h1 class="title">HTML5 —— APlayer 音乐播放器</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 功能简介</a></li>
+<li><a href="#sec-2">2. 使用示例</a></li>
+<li><a href="#sec-3">3. 官方说明</a>
+<ul>
+<li><a href="#sec-3-1">3.1. 使用</a>
+<ul>
+<li><a href="#sec-3-1-1">3.1.1. HTML</a></li>
+<li><a href="#sec-3-1-2">3.1.2. API</a></li>
+<li><a href="#sec-3-1-3">3.1.3. LRC 歌词</a></li>
+<li><a href="#sec-3-1-4">3.1.4. playlist</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">4. <span class="todo TODO">TODO</span> 进一步优化事项</a>
+<ul>
+<li><a href="#sec-4-1">4.1. <span class="todo TODO">TODO</span> css 显示风格设置</a></li>
+<li><a href="#sec-4-2">4.2. <span class="todo TODO">TODO</span> 歌词设置</a></li>
+<li><a href="#sec-4-3">4.3. <span class="todo TODO">TODO</span> 界面大小</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. A Example ：Phil Collins —— Tarzan Soundtrack</a></li>
+</ul>
+</div>
+</div>
+<p>
+今天算是第一次自己动手折腾关于 <code>HTML5</code> 的东西吧，尽管从前可能不知不觉与 <code>HTML5</code> 有过邂逅，当知名具姓揭开面纱之后，还真惊艳。呵呵，夸张了，对于一个小菜来说，感觉到一些便捷，才算不是言过其实。
+</p>
+
+<p>
+最初的要求，不高也不算低： <code>显示歌词，曲目列表，进度于音量调节，启、停播放控制</code> ，如此而已。上网搜了一下，<a href="https://github.com/DIYgod/APlayer">APayer</a> 基本满足要求。开始试用!
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 功能简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+APlayer 是一个 HTML5 音频播放器，它将 audio 标签封装，结合 CSS 可制作出漂亮的播放器 UI。它支持设置歌名、歌手和歌词，可以设置是否自动播放，支持缩略图，支持播放进度以及设置播放源。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 使用示例</h2>
+<div class="outline-text-2" id="text-2">
+<ol class="org-ol">
+<li>首先在头部加载播放器样式文件。
+</li>
+</ol>
+<pre class="example">
+&lt;link rel="stylesheet" href="/media/css/APlayer.min.css"&gt;
+</pre>
+
+<ol class="org-ol">
+<li>在body中加入播放器 div，由于有多个播放模式，这里使用容器 container 封装5个 player。
+<ul class="org-ul">
+<li>注意：这里的播放器3，内嵌了一个属性： &lt;pre class="aplayer-lrc-content"&gt; ... &lt;/pre&gt; ，嵌入了一首歌词。 
+</li>
+</ul>
+</li>
+</ol>
+<pre class="example">
+    &lt;div class="container"&gt;
+        &lt;h1&gt;APlayer 音乐播放器 —— 支持歌词显示和曲目列表&lt;/h1&gt;
+        &lt;hr&gt;
+        &lt;h3&gt;player1：正常模式&lt;/h3&gt;
+        &lt;div id="player1" class="aplayer"&gt;&lt;/div&gt;
+
+        &lt;hr&gt;
+        &lt;h3&gt;player2：精简模式&lt;/h3&gt;
+        &lt;div id="player2" class="aplayer"&gt;&lt;/div&gt;
+
+        &lt;hr&gt;
+        &lt;h3&gt;player3：带 lyrics 歌词模式&lt;/h3&gt;
+        &lt;div id="player3" class="aplayer"&gt;
+            &lt;pre class="aplayer-lrc-content"&gt;
+                [ti:You ll be in my heart]
+                [ar:Phil Collins]
+                [al:《人猿泰山》主题歌]
+                [by:菲尔 柯林斯]
+[00:00.00] &lt;&lt;Phil Collins -You ll Be In My Heart&gt;&gt; 
+[00:03.00] &lt;&lt;Soundtrack From Tanzan&gt;&gt;
+[00:11.00]Come, stop your crying, it will be all right 
+[00:15.00]Just take my hand, hold it tight 
+[00:20.00]I will protect you from, all around you 
+[00:25.00][00:45.00]I will be here, don t you cry 
+[00:30.00]For one so small, you seem so strong 
+[00:35.00]My arms will hold you, keep you safe and warm 
+[00:40.00]This bond between us, can t be broken 
+[00:50.00]CAUSE you ll be in my heart 
+[00:54.00]Yes, you ll be in my heart 
+[00:59.00]From this day on
+[01:01.00]  now and forever more 
+[01:10.00]You ll be in my heart 
+[01:14.00][03:16.00]No matter what they say 
+[01:19.00]You ll be here in my heart
+[01:24.00] always 
+[01:32.00]Why can t they understand the way we feel? 
+[01:37.00]They just don t trust, what they can t explain 
+[01:42.00]I know we re different but, deep inside us 
+[01:47.00]We re not that different at all 
+[01:51.00]And you ll be in my heart 
+[01:56.00]Yes, you ll be in my heart 
+[02:01.00]From this day on,
+[02:04.00][03:04.00] now and forever more 
+[02:11.00]Don t listen to them
+[02:14.00] cause what do they know? 
+[02:17.00]We need each other, to have to hold 
+[02:21.00][02:41.00]They ll see in time
+[02:25.00] I know 
+[02:31.00]When destiny calls you, you must be strong 
+[02:36.00]I may not be with you, but you ve got to hold on 
+[02:45.00]  I know
+[02:48.00] we ll show them together 
+[02:51.00] Cause you ll be in my heart 
+[02:55.00]Believe me,  you ll be in my heart 
+[03:00.00]I be there From this day on
+[03:11.00]Oh ,You ll be in my heart (You ll be here in my heart)
+[03:20.00] I ll be with you be here in my heart( I ll be there always )
+[03:31.00]Always
+[03:35.00] I ll be with you 
+[03:41.00]I ll be there for you, always 
+[03:44.00]Always and always
+[03:50.00] Just look over your shoulder 
+[03:55.00][04:00.00]Just look over your shoulder
+[04:04.00] I ll be there, always
+            &lt;/pre&gt;&lt;/div&gt;
+
+        &lt;hr&gt;
+        &lt;h3&gt;player4：带曲目表模式&lt;/h3&gt;
+        &lt;div id="player4" class="aplayer"&gt;&lt;/div&gt;
+
+        &lt;hr&gt;
+        &lt;h3&gt;player5：带曲目表与 lyrics 歌词模式&lt;/h3&gt;
+        &lt;div id="player5" class="aplayer"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+</pre>
+
+
+<p>
+3） 定制的播放器
+</p>
+<ul class="org-ul">
+<li>载入基础播放器脚本文件 MyPlayer.js 
+</li>
+</ul>
+<pre class="example">
+&lt;script src="./APlayer-master/APlayer.min.js"&gt;&lt;/script&gt;
+</pre>
+
+<ul class="org-ul">
+<li>定制播放器属性参数
+首先new一个对象，绑定播放器元素，设置各种选项，最后使用ap.init();载入播放器。
+
+<p>
+注意:APlayer不依赖诸如jQuery或Zepto等第三方JS库，它直接将html5中的audio标签封装起来，  所以开发者只需简单几句代码就可在页面上呈现漂亮的音乐播放器了。
+</p>
+</li>
+</ul>
+
+<p>
+选项说明:
+</p>
+<ul class="org-ul">
+<li>element：绑定的播放器元素。
+</li>
+<li>narrow：是否使用窄屏模式，即只显示缩略图和播放按钮，请看演示demo中的样式3。
+</li>
+<li>autoplay：是否自动播放，注意这个在移动端手机上不支持自动播放的。
+</li>
+<li>showlrc：是否展示歌词，请看演示demo中的样式1。
+</li>
+<li>music：用来设置播放音乐相关信息的集合，其中title表示音乐标题，author表示音乐的作者，url表示播放文件地址，pic当然就是播放的音乐缩略图。
+</li>
+</ul>
+
+<p>
+APlayer还提供了播放器事件，如载入播放器：ap.init()；播放：ap.play()和暂停：ap.pause()。
+</p>
+
+<ul class="org-ul">
+<li>必须注意：
+<ul class="org-ul">
+<li>属性变量赋值，使用了‘’引用，因此注意输入的字符串中，不能含有‘，或者事先进行转义。
+</li>
+</ul>
+</li>
+</ul>
+
+<pre class="example">
+&lt;script&gt;
+var ap1 = new APlayer({
+    element: document.getElementById('player1'),
+    narrow: false,
+    autoplay: true,
+    showlrc: false,
+    mutex: true,
+    theme: '#e6d0b2',
+    preload: 'metadata',
+    music: {
+        title: 'Tarzan: You ll Be in My Heart',
+        author: 'Phil Collins &amp; Mark Mancina',
+        url: './media/PhilCollins/You ll Be in My Heart.mp3',
+        pic: 'https://c2.staticflickr.com/8/7059/27146490673_eaec6f2e88_n.jpg'
+    }
+});
+ap1.init();
+
+var ap2 = new APlayer({
+    element: document.getElementById('player2'),
+    narrow: true,
+    autoplay: false,
+    showlrc: false,
+    mutex: true,
+    theme: '#e6d0b2',
+    music: {
+        title: 'Tarzan: Two Worlds (reprise',
+        author: 'Phil Collins &amp; Mark Mancina',
+        url: './media/PhilCollins/Two Worlds (reprise.mp3',
+        pic: 'https://c4.staticflickr.com/8/7240/27146490363_4a4e7a077c_q.jpg'
+    }
+});
+ap2.init();
+
+var ap3 = new APlayer({
+    element: document.getElementById('player3'),
+    narrow: false,
+    autoplay: false,
+    showlrc: true,
+    mutex: true,
+    theme: '#615754',
+    music: {
+        title: 'Tarzan: You ll Be in My Heart(Phil version',
+        author: 'Phil Collins &amp; Mark Mancina',
+        url: './media/PhilCollins/You ll Be in My Heart(Phil version.mp3',
+        pic: 'https://c4.staticflickr.com/8/7240/27146490363_4a4e7a077c_q.jpg'
+    }
+});
+ap3.init();
+
+var ap4 = new APlayer({
+    element: document.getElementById('player4'),
+    narrow: false,
+    autoplay: false,
+    showlrc: false,
+    mutex: true,
+    theme: '#ad7a86',
+    music: [
+        {
+        title: 'Tarzan: You ll Be in My Heart',
+        author: 'Phil Collins &amp; Mark Mancina',
+        url: './media/PhilCollins/You ll Be in My Heart.mp3',
+        pic: 'https://c4.staticflickr.com/8/7436/27146494083_a39d9091ea_q.jpg'
+        },
+        {
+            title: 'Tarzan: You ll Be in My Heart(Phil version',
+            author: 'Phil Collins &amp; Mark Mancina',
+        url: './media/PhilCollins/You ll Be in My Heart(Phil version.mp3',
+        pic: 'https://c4.staticflickr.com/8/7240/27146490363_4a4e7a077c_q.jpg'
+        },
+        {
+            title: 'Tarzan: Two Worlds (reprise',
+            author: 'Phil Collins &amp; Mark Mancina',
+        url: './media/PhilCollins/Two Worlds (reprise.mp3',
+        pic: 'https://c8.staticflickr.com/8/7404/27757481495_70b7e1de57_m.jpg'
+        },
+        {
+        title: 'Tarzan: Trashin the Camp(Phil version',
+        author: 'Phil Collins &amp; Mark Mancina',
+        url: './media/PhilCollins/Trashin the Camp(Phil version.mp3',
+        pic: 'https://c5.staticflickr.com/8/7375/27145298764_84a566660e_n.jpg'
+        }
+    ]
+});
+ap4.init();
+
+&lt;/script&gt;
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 官方说明</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 使用</h3>
+<div class="outline-text-3" id="text-3-1">
+</div><div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> HTML</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<pre class="example">
+&lt;link rel="stylesheet" href="APlayer.min.css"&gt;
+&lt;!-- ... --&gt;
+&lt;div id="player1" class="aplayer"&gt;&lt;/div&gt;
+&lt;!-- ... --&gt;
+&lt;script src="APlayer.min.js"&gt;&lt;/script&gt;
+</pre>
+</div>
+<ul class="org-ul"><li><a id="sec-3-1-1-1" name="sec-3-1-1-1"></a>JS<br  /><div class="outline-text-5" id="text-3-1-1-1">
+<pre class="example">
+var ap = new APlayer(option);
+ap.init();
+</pre>
+</div>
+</li>
+<li><a id="sec-3-1-1-2" name="sec-3-1-1-2"></a>选项<br  /><div class="outline-text-5" id="text-3-1-1-2">
+<pre class="example">
+var option = {
+    element: document.getElementById('player1'),                       // Optional, player element
+    narrow: false,                                                     // Optional, narrow style
+    autoplay: true,                                                    // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                                        // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                                       // Optional, pause other players when this player playing
+    theme: '#e6d0b2',                                                  // Optional, theme color, default: #b7daff
+    loop: true,                                                        // Optional, loop play music, default: true
+    preload: 'metadata',                                               // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'metadata' in Desktop, 'none' in mobile
+    music: {                                                           // Required, music info, see: ###With playlist
+        title: 'Preparation',                                          // Required, music title
+        author: 'Hans Zimmer/Richard Harvey',                          // Required, music author
+        url: 'http://7xifn9.com1.z0.glb.clouddn.com/Preparation.mp3',  // Required, music url
+        pic: 'http://7xifn9.com1.z0.glb.clouddn.com/Preparation.jpg'   // Optional, music picture
+        lrc: '[00:00.00]lrc here\n[00:01.00]aplayer'                   // Optional, lrc, see: ###With lrc
+    }
+}
+</pre>
+</div>
+</li></ul>
+</div>
+
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> API</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<ul class="org-ul">
+<li>ap.init()
+</li>
+<li>ap.play()
+</li>
+<li>ap.pause()
+</li>
+</ul>
+</div>
+<ul class="org-ul"><li><a id="sec-3-1-2-1" name="sec-3-1-2-1"></a>绑定事件<br  /><div class="outline-text-5" id="text-3-1-2-1">
+<p>
+ap.on(event, handler)
+</p>
+
+<p>
+event:
+</p>
+
+<ul class="org-ul">
+<li>play: Triggered when APlayer start play
+</li>
+<li>pause: Triggered when APlayer paused
+</li>
+<li>canplay: Triggered when enough data is available that APlayer can be played
+</li>
+<li>playing: Triggered periodically when APlayer is playing
+</li>
+<li>ended: Triggered when APlayer ended
+</li>
+<li>error: Triggered when an error occurs
+</li>
+</ul>
+</div>
+</li></ul>
+</div>
+<div id="outline-container-sec-3-1-3" class="outline-4">
+<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> LRC 歌词</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+歌词可以嵌入 HTML 中，也可以嵌入 JS 中。支持多个时间标签，三种十进制秒。
+</p>
+<pre class="example">
+[mm:ss.xx]lyric
+[mm:ss.xxx]lyric
+[mm:ss.xx][mm:ss.xx][mm:ss.xx]lyric
+</pre>
+<ul class="org-ul">
+<li>JS 中的 LRC 格式：
+</li>
+</ul>
+<pre class="example">
+{
+    showlrc: 1,
+    music: {
+        lrc: '[00:00.00]lrc here\n[00:01.00]aplayer'    // lrc here, separate lines with \n
+    }
+}
+</pre>
+<ul class="org-ul">
+<li>HTML 中的 LRC 格式
+</li>
+</ul>
+<pre class="example">
+JS:
+{
+    showlrc: 2
+}
+
+HTML:
+&lt;div id="player1" class="aplayer"&gt;
+    &lt;pre class="aplayer-lrc-content"&gt;
+        [00:00.00]平凡之路 - 朴树
+        [00:04.01]作词：韩寒 朴树
+        [00:08.02]作曲：朴树 编曲：朴树
+        [00:12.02]徘徊着的 在路上的
+        [00:17.37]你要走吗
+        [00:23.20]易碎的 骄傲着
+        &lt;!-- ... --&gt;
+    &lt;/pre&gt;
+&lt;/div&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-1-4" class="outline-4">
+<h4 id="sec-3-1-4"><span class="section-number-4">3.1.4</span> playlist</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<pre class="example">
+JS:
+
+Option:
+
+music: [
+    {
+        title: '',
+        author: '',
+        url: '',
+        pic: ''
+    },
+    {
+        title: '',
+        author: '',
+        url: '',
+        pic: ''
+    },
+    ...
+]
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> 进一步优化事项</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> <span class="todo TODO">TODO</span> css 显示风格设置</h3>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> 歌词设置</h3>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> <span class="todo TODO">TODO</span> 界面大小</h3>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> A Example ：Phil Collins —— Tarzan Soundtrack</h2>
+<div class="outline-text-2" id="text-5">
+    <div class="container">
+        <h1>APlayer 音乐播放器 —— 支持歌词显示和曲目列表</h1>
+        <hr>
+        <h3>player1：正常模式</h3>
+        <div id="player1" class="aplayer"></div>
+
+        <h3>player2：精简模式</h3>
+        <div id="player2" class="aplayer"></div>
+
+        <h3>player3：带 lyrics 歌词模式</h3>
+        <div id="player3" class="aplayer">
+            <pre class="aplayer-lrc-content">
+                [ti:You ll be in my heart]
+                [ar:Phil Collins]
+                [al:《人猿泰山》主题歌]
+                [by:菲尔 柯林斯]
+[00:00.00] <<Phil Collins -You ll Be In My Heart>> 
+[00:03.00] <<Soundtrack From Tanzan>>
+[00:11.00]Come, stop your crying, it will be all right 
+[00:15.00]Just take my hand, hold it tight 
+[00:20.00]I will protect you from, all around you 
+[00:25.00][00:45.00]I will be here, don t you cry 
+[00:30.00]For one so small, you seem so strong 
+[00:35.00]My arms will hold you, keep you safe and warm 
+[00:40.00]This bond between us, can t be broken 
+[00:50.00]CAUSE you ll be in my heart 
+[00:54.00]Yes, you ll be in my heart 
+[00:59.00]From this day on
+[01:01.00]  now and forever more 
+[01:10.00]You ll be in my heart 
+[01:14.00][03:16.00]No matter what they say 
+[01:19.00]You ll be here in my heart
+[01:24.00] always 
+[01:32.00]Why can t they understand the way we feel? 
+[01:37.00]They just don t trust, what they can t explain 
+[01:42.00]I know we re different but, deep inside us 
+[01:47.00]We re not that different at all 
+[01:51.00]And you ll be in my heart 
+[01:56.00]Yes, you ll be in my heart 
+[02:01.00]From this day on,
+[02:04.00][03:04.00] now and forever more 
+[02:11.00]Don t listen to them
+[02:14.00] cause what do they know? 
+[02:17.00]We need each other, to have to hold 
+[02:21.00][02:41.00]They ll see in time
+[02:25.00] I know 
+[02:31.00]When destiny calls you, you must be strong 
+[02:36.00]I may not be with you, but you ve got to hold on 
+[02:45.00]  I know
+[02:48.00] we ll show them together 
+[02:51.00] Cause you ll be in my heart 
+[02:55.00]Believe me,  you ll be in my heart 
+[03:00.00]I be there From this day on
+[03:11.00]Oh ,You ll be in my heart (You ll be here in my heart)
+[03:20.00] I ll be with you be here in my heart( I ll be there always )
+[03:31.00]Always
+[03:35.00] I ll be with you 
+[03:41.00]I ll be there for you, always 
+[03:44.00]Always and always
+[03:50.00] Just look over your shoulder 
+[03:55.00][04:00.00]Just look over your shoulder
+[04:04.00] I ll be there, always
+            </pre></div>
+
+        <h3>player4：带曲目表模式</h3>
+        <div id="player4" class="aplayer"></div>
+
+        <h3>player5：带曲目表与 lyrics 歌词模式</h3>
+        <div id="player5" class="aplayer"></div>
+
+    </div>
+<!-- 3、载入定制的播放器 MyPlayer.js 文件-->
+    <script src="/media/js/APlayer.min.js"></script>
+
+<!-- 播放器定制基于 JavaScript 完成：
+  首先new一个对象，绑定播放器元素，设置各种选项，最后使用ap.init();载入播放器。
+  注意:APlayer不依赖诸如jQuery或Zepto等第三方JS库，它直接将html5中的audio标签封装起来，
+  所以开发者只需简单几句代码就可在页面上呈现漂亮的音乐播放器了。
+选项说明:
+     element：绑定的播放器元素。
+     narrow：是否使用窄屏模式，即只显示缩略图和播放按钮，请看演示demo中的样式3。
+     autoplay：是否自动播放，注意这个在移动端手机上不支持自动播放的。
+     showlrc：是否展示歌词，请看演示demo中的样式1。
+     music：用来设置播放音乐相关信息的集合，其中title表示音乐标题，author表示音乐的作者，url表示播放文件地址，pic当然就是播放的音乐缩略图。
+  APlayer还提供了播放器事件，如载入播放器：ap.init()；播放：ap.play()和暂停：ap.pause()。
+--!>
+
+<script>
+var ap1 = new APlayer({
+    element: document.getElementById('player1'),
+    narrow: false,
+    autoplay: true,
+    showlrc: false,
+    mutex: true,
+    theme: '#e6d0b2',
+    preload: 'metadata',
+    music: {
+        title: 'Tarzan: You ll Be in My Heart',
+        author: 'Phil Collins & Mark Mancina',
+        url: '/MyResource/music/PhilCollins/YoullBeinMyHeart.mp3',
+        pic: '/MyResource/music/PhilCollins/TarzanCD.jpg'
+    }
+});
+ap1.init();
+
+var ap2 = new APlayer({
+    element: document.getElementById('player2'),
+    narrow: true,
+    autoplay: false,
+    showlrc: false,
+    mutex: true,
+    theme: '#e6d0b2',
+    music: {
+        title: 'Tarzan: Two Worlds (reprise',
+        author: 'Phil Collins & Mark Mancina',
+        url: '/MyResource/music/PhilCollins/TwoWorlds(reprise.mp3',
+        pic: '/MyResource/music/PhilCollins/TarzanCD.jpg'
+    }
+});
+ap2.init();
+
+var ap3 = new APlayer({
+    element: document.getElementById('player3'),
+    narrow: false,
+    autoplay: false,
+    showlrc: true,
+    mutex: true,
+    theme: '#615754',
+    music: {
+        title: 'Tarzan: You ll Be in My Heart(Phil version',
+        author: 'Phil Collins & Mark Mancina',
+        url: '/MyResource/music/PhilCollins/YoullBeinMyHeart(Phil.mp3',
+        pic: '/MyResource/music/PhilCollins/TarzanCD.jpg'
+    }
+});
+ap3.init();
+
+var ap4 = new APlayer({
+    element: document.getElementById('player4'),
+    narrow: false,
+    autoplay: false,
+    showlrc: false,
+    mutex: true,
+    theme: '#ad7a86',
+    music: [
+        {
+        title: 'Tarzan: You ll Be in My Heart',
+        author: 'Phil Collins & Mark Mancina',
+        url: '/MyResource/music/PhilCollins/YoullBeinMyHeart.mp3',
+        pic: '/MyResource/music/PhilCollins/TarzanFront.jpg'
+        },
+        {
+            title: 'Tarzan: You ll Be in My Heart(Phil version',
+            author: 'Phil Collins & Mark Mancina',
+        url: '/MyResource/music/PhilCollins/YoullBeinMyHeart(Phil.mp3',
+        pic: '/MyResource/music/PhilCollins/TarzanCD.jpg'
+        },
+        {
+            title: 'Tarzan: Two Worlds (reprise',
+            author: 'Phil Collins & Mark Mancina',
+        url: '/MyResource/music/PhilCollins/TwoWorlds(reprise.mp3',
+        pic: '/MyResource/music/PhilCollins/TarzanBack.jpg'
+        },
+        {
+        title: 'Tarzan: Trashin the Camp(Phil version',
+        author: 'Phil Collins & Mark Mancina',
+        url: '/MyResource/music/PhilCollins/TrashinTheCamp(Phil.mp3',
+        pic: '/MyResource/music/PhilCollins/Tarzan001.jpg'
+        }
+    ]
+});
+ap4.init();
+
+</script>
+</div>
+</div>
+
+</div>
+</div>
+<div>
+  <div class="post-meta">
+    <span title="post date" class="post-info">2016-06-18</span>
+    <span title="last modification date" class="post-info">2016-06-23</span>
+    <span title="tags" class="post-info"><a href="/tags/life/">Life</a>, <a href="/tags/music/">Music</a>, <a href="/tags/html5/">HTML5</a>, <a href="/tags/blog/">Blog</a></span>
+    <span title="author" class="post-info">Victor72</span>
+  </div>
+  <script src="/media/js/jquery-2.1.3.min.js"></script>
+  <section>
+    <h1>Comments</h1>
+    <div id="comment-wrap">
+      <a class="disqus_label">使用Disqus评论</a>
+      <a class="ds-label">使用多说评论</a>
+    </ul>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+     //var disqus_developer = 1;
+     var preempt_signal=false;
+     var disqus_identifier = "/blog/2016/06/18/html5-audio-player/";
+     var disqus_url = "https://victor72.github.io/blog/2016/06/18/html5-audio-player/";
+     var disqus_shortname = 'victor72githubio';
+     /* * * DON'T EDIT BELOW THIS LINE * * */
+     (function() {
+       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+       dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+       $('#disqus_thread').css('display','none');
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  </section>
+  <script src="/media/js/kdComment.js"></script>
+  <div class="footer">
+    <p>Generated by <a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org mode</a> 8.x)</p>
+    <p>
+      Copyright &copy; 2014 - <span id="footerYear"></span> <a href="mailto:victoryman &lt;at&gt; 126 &lt;dot&gt; com">Victor72</a>
+      &nbsp;&nbsp;-&nbsp;&nbsp;
+      Powered by <a href="https://github.com/kelvinh/org-page" target="_blank">org-page</a><br/>
+      Themed with <a href="https://github.com/kuangdash/emacs_love" target="_blank">emacs_love</a>
+      <script type="text/javascript">document.getElementById("footerYear").innerHTML = (new Date()).getFullYear();</script>
+    </p>
+  </div>
+    </div>
+
+  </body>
+</html>
